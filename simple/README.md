@@ -4,7 +4,7 @@ This method is the simplest way to migrate an
 [Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
 standalone webpage.
 
-## Install
+## Install
 
 Just open the [dist/index.html](./dist/index.html) file in a browser. It will
 display the same map as in the
