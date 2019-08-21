@@ -12,14 +12,12 @@ display the same map as in the
 
 Alternatively, serve the file from a web server.
 
-## Pros and cons
-
-Pros:
+## Pros
 
 - simple (does not require knowledge about npm, node.js, ES modules,
   transpilation, or now.sh)
 
-Cons:
+## Cons
 
 - requires browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
