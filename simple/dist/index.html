@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Minimal HTML head elements -->
+    <meta charset="utf-8" />
+    <title>Tissot's indicatrix</title>
+  </head>
+  <body>
+    <!-- Title of the page -->
+    <h1>Tissot's indicatrix</h1>
+
+    <!-- Empty placeholders -->
+    <div id="map"></div>
+    <p id="controls"></p>
+
+    <!-- JavaScript code to fill the empty placeholders with notebook cells
+         Note that the script is an ES module, not vanilla JavaScript
+      -->
+    <script type="module">
+      // Import Observable notebook
+      import notebook from 'https://api.observablehq.com/@fil/tissots-indicatrix.js?v=3';
+
+      // Import Observable library
+      import {
+        Runtime,
+        Inspector,
+      } from 'https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js';
+
+      // Render selected notebook cells into DOM elements of this page
+      const runtime = new Runtime();
+      const main = runtime.module(notebook, name => {
+        switch (name) {
+          case 'display':
+            // render 'display' notebook cell into <div id="map"></div>
+            return new Inspector(document.querySelector('#map'));
+            break;
+          case 'viewof p':
+            // render 'viewof p' notebook cell into <p id="controls"></p>
+            return new Inspector(document.querySelector('#controls'));
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
