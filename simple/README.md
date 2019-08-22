@@ -1,6 +1,6 @@
 # Simple
 
-This method is the simplest way to migrate an
+This method is a simple way to migrate an
 [Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
 standalone webpage.
 
@@ -16,6 +16,8 @@ Alternatively, serve the file from a web server.
 
 - simple (does not require knowledge about npm, node.js, ES modules,
   transpilation, or now.sh)
+- only one file to manage (index.html)
+- allows to render only some cells of the notebook
 
 ## Cons
 
