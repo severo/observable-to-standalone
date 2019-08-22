@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Minimal HTML head elements -->
+    <meta charset="utf-8" />
+    <title>Breakout!</title>
+  </head>
+  <body>
+    <!-- Title of the page -->
+    <h1>Breakout!</h1>
+
+    <!-- Empty placeholders -->
+    <div id="game"></div>
+    <div id="controls">
+      <p class="button"></p>
+      <p>Speed: <span class="slider"></span></p>
+    </div>
+
+    <!-- JavaScript code to fill the empty placeholders with notebook cells
+         Note that the script is an ES module, not vanilla JavaScript
+      -->
+    <script type="module">
+      // Import Observable notebook
+      import notebook from 'https://api.observablehq.com/@jashkenas/breakout.js?v=3';
+
+      // Import Observable library
+      import {
+        Runtime,
+        Inspector,
+      } from 'https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js';
+
+      // Render selected notebook cells into DOM elements of this page
+      const runtime = new Runtime();
+      const main = runtime.module(notebook, name => {
+        switch (name) {
+          case 'viewof c':
+            // render 'viewof c' notebook cell into <div id="game"></div>
+            return new Inspector(document.querySelector('#game'));
+            break;
+          case 'viewof newgame':
+            // render 'viewof newgame' notebook cell into <p class="button"></p>
+            return new Inspector(document.querySelector('#controls .button'));
+            break;
+          case 'viewof speed':
+            // render 'viewof speed' notebook cell into <span class="slider"></span>
+            return new Inspector(document.querySelector('#controls .slider'));
+            break;
+          default:
+            // force the evaluation of all the notebook cells (required for this notebook)
+            return true;
+        }
+      });
+    </script>
+  </body>
+</html>
