@@ -42,7 +42,7 @@ and open a browser at http://localhost:8000.
 
 - requires browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
-- generates many HTTP requests (43), and 38 of which are remote:
+- generates many HTTP requests (42), and 37 of which are remote:
   - 1 - the
     [110m_land.geojson](https://unpkg.com/visionscarto-world-atlas@0.0.6/world/110m_land.geojson)
     data file (GeoJSON)
