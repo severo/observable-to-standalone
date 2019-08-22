@@ -6,7 +6,7 @@ standalone webpage.
 
 ## Install
 
-Just open the [dist/index.html](./dist/index.html) file in a browser. It will
+Open the [tissot/index.html](./tissot/index.html) file in a browser. It will
 display the same map as in the
 [Tissot's indicatrix Observable notebook](https://observablehq.com/@fil/tissots-indicatrix).
 
