@@ -127,7 +127,7 @@ with some of the modules retrieved locally (the notebooks).
       // Import Observable notebook
       // Note the relative path via ./node_modules - it's not optimal and will
       // be improved in the next steps
-      import notebook from './src/tissots-indicatrix/@fil/tissots-indicatrix.js';
+      import notebook from './node_modules/@fil/tissots-indicatrix/@fil/tissots-indicatrix.js';
 
       // Import Observable library
       // Same observation
@@ -174,7 +174,7 @@ To simplify this, a single ES module will be generated, using
   directory) from the final files (in a public/ directory):
 
       ```
-      mkdir src public
+      mkdir public
       mv index.html public/
       mv main.js src/
       ```
@@ -195,7 +195,7 @@ To simplify this, a single ES module will be generated, using
 - create a configuration file for rollup:
 
       ```
-      edit rollup.config.js
+      editor rollup.config.js
       ```
 
       ```
@@ -233,7 +233,7 @@ To simplify this, a single ES module will be generated, using
 
       ```json
       "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c",
         ...
       }
       ```
