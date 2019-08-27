@@ -13,7 +13,7 @@ standalone webpage.
 
 Using cli:
 
-```
+```bash
 mkdir /tmp/notebook
 cd /tmp/notebook
 curl -o notebook.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
