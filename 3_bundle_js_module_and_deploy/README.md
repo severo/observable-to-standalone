@@ -42,39 +42,38 @@ of the modules retrieved locally (the notebooks).
 - Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
 - Create a new npm project:
 
-      ```
-      mkdir -p tissot/step1
-      cd tissot/step1
-      npm init
-      ```
+  ```
+  mkdir -p tissot/step1
+  cd tissot/step1
+  npm init
+  ```
 
-      ```
-      package name: (tissot)
-      version: (1.0.0)
-      description: Standalone version of @fil's Tissot indicatrix Observable notebook
-      entry point: (index.js)
-      test command:
-      git repository:
-      keywords:
-      author:
-      license: (ISC)
-      About to write to /home/slesage/dev/4_contratos/liris/observable-to-standalone/advanced/tissot/package.json:
+  ```
+  package name: (tissot)
+  version: (1.0.0)
+  description: Standalone version of @fil's Tissot indicatrix Observable notebook
+  entry point: (index.js)
+  test command:
+  git repository:
+  keywords:
+  author:
+  license: (ISC)
+  About to write to /home/slesage/dev/4_contratos/liris/observable-to-standalone/advanced/tissot/package.json:
 
-      {
-        "name": "tissot",
-        "version": "1.0.0",
-        "description": "Standalone version of @fil's Tissot indicatrix Observable notebook",
-        "main": "index.js",
-        "scripts": {
-          "test": "echo \"Error: no test specified\" && exit 1"
-        },
-        "author": "",
-        "license": "ISC"
-      }
+  {
+    "name": "tissot",
+    "version": "1.0.0",
+    "description": "Standalone version of @fil's Tissot indicatrix Observable notebook",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
 
-
-      Is this OK? (yes)
-      ```
+  Is this OK? (yes)
+  ```
 
 - Install the notebook as a development dependency (the URL is obtained on the
   notebook page, clicking on "…" and then on "Download tarball"):
