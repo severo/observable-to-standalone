@@ -77,12 +77,16 @@ with some of the modules retrieved locally (the notebooks).
   notebook page, clicking on "…" and then on "Download tarball"):
 
       ```
-      npm install https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
+      mkdir -p src/tissots-indicatrix
+      curl -o /tmp/package.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
+      tar xf /tmp/package.tgz --directory src/tissots-indicatrix
+      rm /tmp/package.tgz
+      npm install --save src/tissots-indicatrix
       ```
 
   Note that it's exactly the same as the
   [simplest method](../simplest/README.md): the same .tgz file is downloaded and
-  extracted (in node_modules/ in that case).
+  extracted (in src/tissots-indicatrix/ in that case).
 
 - Install the Observable runtime module:
 
@@ -123,7 +127,7 @@ with some of the modules retrieved locally (the notebooks).
       // Import Observable notebook
       // Note the relative path via ./node_modules - it's not optimal and will
       // be improved in the next steps
-      import notebook from './node_modules/@fil/tissots-indicatrix/@fil/tissots-indicatrix.js';
+      import notebook from './src/tissots-indicatrix/@fil/tissots-indicatrix.js';
 
       // Import Observable library
       // Same observation

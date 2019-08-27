@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fil/tissots-indicatrix": "https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3",
-    "@observablehq/runtime": "^4.3.3"
+    "@fil/tissots-indicatrix": "file:src/tissots-indicatrix",
+    "@observablehq/runtime": "^4.4.1"
   }
 }
