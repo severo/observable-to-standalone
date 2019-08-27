@@ -1,4 +1,4 @@
-# Simple
+# README
 
 This method is the simplest way to migrate an
 [Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
@@ -52,5 +52,5 @@ and open a browser at http://localhost:8000.
   - 13 - dependencies (JS), mainly D3js modules like
     [d3-geo-projection.min.js](https://cdn.jsdelivr.net/npm/d3-geo-projection@2.7.0/dist/d3-geo-projection.min.js)
 - does not work locally (offline) since it depends on requests to
-  csn.jsdeliver.net and unpkg.com
+  cdn.jsdeliver.net and unpkg.com
 - requires to setup hosting before the webpage to be published online

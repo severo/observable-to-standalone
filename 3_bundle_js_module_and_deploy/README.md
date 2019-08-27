@@ -1,30 +1,32 @@
-# Advanced
+# README
 
-This method is a more complete way than the [simple method](../simple/README.md)
-to migrate an
-[Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
-standalone webpage.
-
-## Install
-
-Open the [tissot/index.html](./tissot/index.html) file in a browser. It will
-display the same map as in the
-[Tissot's indicatrix Observable notebook](https://observablehq.com/@fil/tissots-indicatrix).
-
-Alternatively, serve the file from a web server.
+This method allows to generate fewer requests than
+[requesting Observable](../2_request_observable/README.md) and to deploy online,
+but is more complicated since it requires to manage more files and concepts.
 
 ## Pros
 
-- does not require browser
-  [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
-- generates few HTTP requests (???):
-- works locally (offline) since it depends only on local resources
-- allows deployment to now.sh hosting
+- generates fewer HTTP requests (3 Observable notebooks modules and the
+  [runtime.js](https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js)
+  Observable library are bundled in
+  [public/main.js](./tissot/step3/public/main.js))
+- allows to render only some cells of the notebook
+- does not require to setup hosting before the webpage to be published online,
+  deploys to now.sh infrastructure
 
 ## Cons
 
-- complex: requires knowledge about npm, node.js, ES modules, transpilation,
-  now.sh
+- requires browser
+  [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
+- does not work locally (offline) since it depends on requests to
+  cdn.jsdeliver.net and unpkg.com, and still generates a lot of HTTP requests
+- complex: requires knowledge about npm, node.js, ES modules, now.sh
+
+Note: even if the bundled module could be transpiled with Babel in order to
+transform it to "standard" JavaScript supported by old browsers, it would not be
+useful at all. Indeed, if the cells of the notebooks require modules or make use
+of "modern" JavaScript, the old browsers will break since these cells will be
+loaded at runtime and thus will not be transpiled.
 
 ## Tutorial
 
@@ -33,8 +35,9 @@ additional features in each step.
 
 ### Step 1 - setup a npm package
 
-The first step gives code similar to the [simplest method](../simple/README.md),
-with some of the modules retrieved locally (the notebooks).
+The first step gives code similar to the
+["request Observable method"](../2_request_observale/README.md), but with some
+of the modules retrieved locally (the notebooks).
 
 - Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
 - Create a new npm project:
@@ -85,8 +88,8 @@ with some of the modules retrieved locally (the notebooks).
       ```
 
   Note that it's exactly the same as the
-  [simplest method](../simplest/README.md): the same .tgz file is downloaded and
-  extracted (in src/tissots-indicatrix/ in that case).
+  [default index method](../1_default_index/README.md): the same .tgz file is
+  downloaded and extracted (in src/tissots-indicatrix/ in that case).
 
 - Install the Observable runtime module:
 
@@ -301,3 +304,5 @@ various solutions to help publish from the cli, let's see one of them:
       ```
 
 - open the now.sh URL in a browser (for example: https://step3-eq4kmqwto.now.sh)
+
+Note: the resulting code can be found in [./step3](./step3/) directory.

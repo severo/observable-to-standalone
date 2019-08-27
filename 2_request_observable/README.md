@@ -1,4 +1,4 @@
-# Simple
+# README
 
 This method is a simple way to migrate an
 [Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
@@ -41,7 +41,7 @@ Alternatively, serve the file from a web server.
   - 13 - dependencies (JS), mainly D3js modules like
     [d3-geo-projection.min.js](https://cdn.jsdelivr.net/npm/d3-geo-projection@2.7.0/dist/d3-geo-projection.min.js)
 - does not work locally (offline) since it depends on requests to
-  csn.jsdeliver.net, api.observablehq.com and unpkg.com
+  cdn.jsdeliver.net, api.observablehq.com and unpkg.com
 - requires to setup hosting before the webpage to be published online
 
 ## How to adapt to another notebook
