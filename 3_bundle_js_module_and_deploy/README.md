@@ -78,87 +78,87 @@ of the modules retrieved locally (the notebooks).
 - Install the notebook as a development dependency (the URL is obtained on the
   notebook page, clicking on "…" and then on "Download tarball"):
 
-      ```
-      mkdir -p src/tissots-indicatrix
-      curl -o /tmp/package.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
-      tar xf /tmp/package.tgz --directory src/tissots-indicatrix
-      rm /tmp/package.tgz
-      npm install --save src/tissots-indicatrix
-      ```
+  ```
+  mkdir -p src/tissots-indicatrix
+  curl -o /tmp/package.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
+  tar xf /tmp/package.tgz --directory src/tissots-indicatrix
+  rm /tmp/package.tgz
+  npm install --save src/tissots-indicatrix
+  ```
 
   Note that it's exactly the same as the
   [default index method](../1_default_index/README.md): the same .tgz file is
   downloaded and extracted (in src/tissots-indicatrix/ in that case).
 
-- Install the Observable runtime module:
+* Install the Observable runtime module:
 
-      ```
-      npm install @observablehq/runtime@4
-      ```
+  ```
+  npm install @observablehq/runtime@4
+  ```
 
-- Create the index.html file with the following content:
+* Create the index.html file with the following content:
 
-      ```html
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <!-- Minimal HTML head elements -->
-          <meta charset="utf-8" />
-          <title>Tissot's indicatrix</title>
-        </head>
-        <body>
-          <!-- Title of the page -->
-          <h1>Tissot's indicatrix</h1>
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <!-- Minimal HTML head elements -->
+      <meta charset="utf-8" />
+      <title>Tissot's indicatrix</title>
+    </head>
+    <body>
+      <!-- Title of the page -->
+      <h1>Tissot's indicatrix</h1>
 
-          <!-- Empty placeholders -->
-          <div id="map"></div>
-          <p id="controls"></p>
+      <!-- Empty placeholders -->
+      <div id="map"></div>
+      <p id="controls"></p>
 
-          <!-- JavaScript code to fill the empty placeholders with notebook cells
-               Note that the script is not vanilla JavaScript but an ES module
-               (type="module")
-            -->
-          <script type="module" src="./main.js"></script>
-        </body>
-      </html>
-      ```
+      <!-- JavaScript code to fill the empty placeholders with notebook cells
+           Note that the script is not vanilla JavaScript but an ES module
+           (type="module")
+        -->
+      <script type="module" src="./main.js"></script>
+    </body>
+  </html>
+  ```
 
-- create the main.js file with the following content:
+* create the main.js file with the following content:
 
-      ```js
-      // Import Observable notebook
-      // Note the relative path via ./node_modules - it's not optimal and will
-      // be improved in the next steps
-      import notebook from './node_modules/@fil/tissots-indicatrix/@fil/tissots-indicatrix.js';
+  ```js
+  // Import Observable notebook
+  // Note the relative path via ./node_modules - it's not optimal and will
+  // be improved in the next steps
+  import notebook from './node_modules/@fil/tissots-indicatrix/@fil/tissots-indicatrix.js';
 
-      // Import Observable library
-      // Same observation
-      import {
-        Runtime,
-        Inspector,
-      } from './node_modules/@observablehq/runtime/dist/runtime.js';
+  // Import Observable library
+  // Same observation
+  import {
+    Runtime,
+    Inspector,
+  } from './node_modules/@observablehq/runtime/dist/runtime.js';
 
-      // Render selected notebook cells into DOM elements of this page
-      const runtime = new Runtime();
-      const main = runtime.module(notebook, name => {
-        switch (name) {
-          case 'display':
-            // render 'display' notebook cell into <div id="map"></div>
-            return new Inspector(document.querySelector('#map'));
-            break;
-          case 'viewof p':
-            // render 'viewof p' notebook cell into <p id="controls"></p>
-            return new Inspector(document.querySelector('#controls'));
-            break;
-        }
-      });
-      ```
+  // Render selected notebook cells into DOM elements of this page
+  const runtime = new Runtime();
+  const main = runtime.module(notebook, name => {
+    switch (name) {
+      case 'display':
+        // render 'display' notebook cell into <div id="map"></div>
+        return new Inspector(document.querySelector('#map'));
+        break;
+      case 'viewof p':
+        // render 'viewof p' notebook cell into <p id="controls"></p>
+        return new Inspector(document.querySelector('#controls'));
+        break;
+    }
+  });
+  ```
 
-- serve with:
+* serve with:
 
-      ```
-      python3 -m http.server
-      ```
+  ```
+  python3 -m http.server
+  ```
 
 Note: the resulting code can be found in [./step1](./step1/) directory.
 
@@ -175,56 +175,56 @@ To simplify this, a single ES module will be generated, using
 - as this implies a build step, it's better to separate the sources (in a src/
   directory) from the final files (in a public/ directory):
 
-      ```
-      mkdir public
-      mv index.html public/
-      mv main.js src/
-      ```
+  ```
+  mkdir public
+  mv index.html public/
+  mv main.js src/
+  ```
 
 - install rollup as a development dependency:
 
-      ```
-      npm install --save-dev rollup@1
-      ```
+  ```
+  npm install --save-dev rollup@1
+  ```
 
 - install rollup-plugin-node-resolve to tell rollup to search the modules inside
   the node_modules/ directory:
 
-      ```
-      npm install --save-dev rollup-plugin-node-resolve@5
-      ```
+  ```
+  npm install --save-dev rollup-plugin-node-resolve@5
+  ```
 
 - create a configuration file for rollup:
 
-      ```
-      editor rollup.config.js
-      ```
+  ```
+  editor rollup.config.js
+  ```
 
-      ```
-      import * as meta from './package.json';
-      import resolve from 'rollup-plugin-node-resolve';
+  ```
+  import * as meta from './package.json';
+  import resolve from 'rollup-plugin-node-resolve';
 
-      export default {
-        input: 'src/main.js',
-        onwarn: function(warning, warn) {
-          if (warning.code === 'CIRCULAR_DEPENDENCY') {
-            return;
-          }
-          warn(warning);
-        },
-        output: {
-          file: `public/main.js`,
-          name: '${meta.name}',
-          format: 'iife',
-          indent: false,
-          extend: true,
-          banner: `// ${meta.homepage} v${
-            meta.version
-          } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
-        },
-        plugins: [resolve()],
-      };
-      ```
+  export default {
+    input: 'src/main.js',
+    onwarn: function(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY') {
+        return;
+      }
+      warn(warning);
+    },
+    output: {
+      file: `public/main.js`,
+      name: '${meta.name}',
+      format: 'iife',
+      indent: false,
+      extend: true,
+      banner: `// ${meta.homepage} v${
+        meta.version
+      } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
+    },
+    plugins: [resolve()],
+  };
+  ```
 
   It tells rollup to take the src/main.js file as the source, to find all the
   dependencies (`import` statements), and to concatenate all of them in
@@ -233,35 +233,35 @@ To simplify this, a single ES module will be generated, using
 - add the following line in the package.json file to create a npm command that
   builds the public/main.js file:
 
-      ```json
-      "scripts": {
-        "build": "rollup -c",
-        ...
-      }
-      ```
+  ```json
+  "scripts": {
+    "build": "rollup -c",
+    ...
+  }
+  ```
 
 - adapt the src/main.js file to remove the relative paths
   (rollup-plugin-node-resolve will take care of finding the modules):
 
-      ```js
-      // Import Observable notebook
-      import notebook from '@fil/tissots-indicatrix';
+  ```js
+  // Import Observable notebook
+  import notebook from '@fil/tissots-indicatrix';
 
-      // Import Observable library
-      import {Runtime, Inspector} from '@observablehq/runtime';
-      ```
+  // Import Observable library
+  import {Runtime, Inspector} from '@observablehq/runtime';
+  ```
 
 - build the file:
 
-      ```
-      npm run build
-      ```
+  ```
+  npm run build
+  ```
 
 - run the server:
 
-      ```
-      python3 -m http.server --directory public/
-      ```
+  ```
+  python3 -m http.server --directory public/
+  ```
 
 Note: the resulting code can be found in [./step2](./step2/) directory.
 
@@ -280,27 +280,27 @@ various solutions to help publish from the cli, let's see one of them:
 
 - install the now development dependency:
 
-      ```
-      npm install --save-dev now@16
-      ```
+  ```
+  npm install --save-dev now@16
+  ```
 
 - add a npm script to deploy to the now.sh hosting infrastructure (note the
   `predeploy` script that will run automatically before `deploy`):
 
-      ```json
-      "scripts": {
-        ...
-        "deploy": "now",
-        "predeploy": "npm run build",
-        ...
-      }
-      ```
+  ```json
+  "scripts": {
+    ...
+    "deploy": "now",
+    "predeploy": "npm run build",
+    ...
+  }
+  ```
 
 - deploy on now.sh hosting:
 
-      ```
-      npm run deploy
-      ```
+  ```
+  npm run deploy
+  ```
 
 - open the now.sh URL in a browser (for example: https://step3-eq4kmqwto.now.sh)
 
