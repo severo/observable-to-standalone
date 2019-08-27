@@ -294,4 +294,10 @@ various solutions to help publish from the cli, let's see one of them:
       }
       ```
 
--
+- deploy on now.sh hosting:
+
+      ```
+      npm run deploy
+      ```
+
+- open the now.sh URL in a browser (for example: https://step3-eq4kmqwto.now.sh)

@@ -2,7 +2,7 @@
 (function () {
 'use strict';
 
-// https://observablehq.com/@fil/base-map@1297
+// https://observablehq.com/@fil/base-map@1298
 function define(runtime, observer) {
   const main = runtime.module();
   main.variable(observer()).define(["md"], function(md){return(
@@ -155,6 +155,7 @@ function(projection, c, opts) {
     .data(l.features)
     .enter()
     .append("path")
+    .attr("id", d => d.properties.name)
     .attr("fill", "black");
 
   function render() {
@@ -4313,8 +4314,8 @@ function style(href) {
 function tex(require) {
   return function() {
     return Promise.all([
-      require("@observablehq/katex@0.10.2/dist/katex.min.js"),
-      require.resolve("@observablehq/katex@0.10.2/dist/katex.min.css").then(style)
+      require("@observablehq/katex@0.11.1/dist/katex.min.js"),
+      require.resolve("@observablehq/katex@0.11.1/dist/katex.min.css").then(style)
     ]).then(function(values) {
       var katex = values[0], tex = renderer();
 
