@@ -42,13 +42,13 @@ of the modules retrieved locally (the notebooks).
 - Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
 - Create a new npm project:
 
-  ```
+  ```bash
   mkdir -p tissot/step1
   cd tissot/step1
   npm init
   ```
 
-  ```
+  ```bash
   package name: (tissot)
   version: (1.0.0)
   description: Standalone version of @fil's Tissot indicatrix Observable notebook
@@ -78,7 +78,7 @@ of the modules retrieved locally (the notebooks).
 - Install the notebook as a development dependency (the URL is obtained on the
   notebook page, clicking on "…" and then on "Download tarball"):
 
-  ```
+  ```bash
   mkdir -p src/tissots-indicatrix
   curl -o /tmp/package.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
   tar xf /tmp/package.tgz --directory src/tissots-indicatrix
@@ -92,7 +92,7 @@ of the modules retrieved locally (the notebooks).
 
 * Install the Observable runtime module:
 
-  ```
+  ```bash
   npm install @observablehq/runtime@4
   ```
 
@@ -175,7 +175,7 @@ To simplify this, a single ES module will be generated, using
 - as this implies a build step, it's better to separate the sources (in a src/
   directory) from the final files (in a public/ directory):
 
-  ```
+  ```bash
   mkdir public
   mv index.html public/
   mv main.js src/
@@ -183,24 +183,24 @@ To simplify this, a single ES module will be generated, using
 
 - install rollup as a development dependency:
 
-  ```
+  ```bash
   npm install --save-dev rollup@1
   ```
 
 - install rollup-plugin-node-resolve to tell rollup to search the modules inside
   the node_modules/ directory:
 
-  ```
+  ```bash
   npm install --save-dev rollup-plugin-node-resolve@5
   ```
 
 - create a configuration file for rollup:
 
-  ```
+  ```bash
   editor rollup.config.js
   ```
 
-  ```
+  ```js
   import * as meta from './package.json';
   import resolve from 'rollup-plugin-node-resolve';
 
@@ -253,13 +253,13 @@ To simplify this, a single ES module will be generated, using
 
 - build the file:
 
-  ```
+  ```bash
   npm run build
   ```
 
 - run the server:
 
-  ```
+  ```bash
   python3 -m http.server --directory public/
   ```
 
@@ -280,7 +280,7 @@ various solutions to help publish from the cli, let's see one of them:
 
 - install the now development dependency:
 
-  ```
+  ```bash
   npm install --save-dev now@16
   ```
 
@@ -298,7 +298,7 @@ various solutions to help publish from the cli, let's see one of them:
 
 - deploy on now.sh hosting:
 
-  ```
+  ```bash
   npm run deploy
   ```
 
