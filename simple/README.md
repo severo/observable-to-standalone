@@ -87,17 +87,13 @@ The steps to adapt the solution to another notebook, say
       import notebook from 'https://api.observablehq.com/@fil/tissots-indicatrix.js?v=3';
       (...)
         switch (name) {
-          case 'viewof c':
-            // render 'viewof c' notebook cell into <div id="game"></div>
-            return new Inspector(document.querySelector('#game'));
+          case 'display':
+            // render 'display' notebook cell into <div id="map"></div>
+            return new Inspector(document.querySelector('#map'));
             break;
-          case 'viewof newgame':
-            // render 'viewof newgame' notebook cell into <p class="button"></p>
-            return new Inspector(document.querySelector('#controls .button'));
-            break;
-          case 'viewof speed':
-            // render 'viewof speed' notebook cell into <span class="slider"></span>
-            return new Inspector(document.querySelector('#controls .slider'));
+          case 'viewof p':
+            // render 'viewof p' notebook cell into <p id="controls"></p>
+            return new Inspector(document.querySelector('#controls'));
             break;
         }
       ```
