@@ -9,11 +9,15 @@ This repository provides various methods to migrate an
   at runtime
 - [bundle JavaScript modules](./3_bundle_js_module_and_deploy) into a single
   module, and deploy to now.sh
+- [rewrite notebook cells to native JavaScript](./4_rewrite_code/README.md) for
+  a pure standalone application
+
+Note: you could also try
+[zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks.](https://github.com/zzzev/observable-press)
+as an alternative to the methods described above.
 
 References:
 
 - ["How-To… Embed an Observable Notebook in your CMS"](https://visionscarto.net/observable-jekyll/).
 - [Downloading and Embedding Notebooks](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks)
 - [@observablehq/runtime](https://github.com/observablehq/runtime/blob/master/README.md)
-- [zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks.](https://github.com/zzzev/observable-press):
-  an alternative to the methods described above
