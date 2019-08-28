@@ -15,7 +15,6 @@ Other more trivial methods:
 - [download and extract tgz from Observable notebook](./default_observable_export/README.md)
   to use the default index.html file provided in the tgz file
 - [get JavaScript modules from api.observablehq.com](./request_observable_api/README.md)
-
   at runtime
 
 ## References
