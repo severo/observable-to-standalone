@@ -15,7 +15,7 @@ Three tutorials are proposed:
 3. [bundle JavaScript modules](./3_bundle_js_and_deploy) into a single
    JavaScript file, and deploy to now.sh
 
-## References
+## References
 
 - ["How-To… Embed an Observable Notebook in your CMS"](https://visionscarto.net/observable-jekyll/).
 - [Downloading and Embedding Notebooks](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks)
