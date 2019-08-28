@@ -12,8 +12,8 @@ Three tutorials are proposed:
    to use the default index.html file provided in the tgz file
 2. [get JavaScript modules from api.observablehq.com](./2_request_observable_api/README.md)
    at runtime
-3. [bundle JavaScript modules](./3_bundle_js_and_deploy) into a single
-   JavaScript file, and deploy to now.sh
+3. [bundle all modules](./3_bundle_js_and_deploy) into a single JavaScript file,
+   and deploy to now.sh
 
 ## References
 

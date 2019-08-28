@@ -1,6 +1,6 @@
-# README
+# Method 1 - Use the default Observable export
 
-This method is the simplest way to migrate an
+This method is the simplest way to "migrate" an
 [Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
 standalone webpage.
 

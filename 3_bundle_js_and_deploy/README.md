@@ -1,4 +1,4 @@
-# README
+# Method 3 - Bundle all modules into a local JavaScript file
 
 This method allows to generate fewer requests than the
 ["requesting Observable API" method](../2_request_observable_api/README.md) and
