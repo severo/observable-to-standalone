@@ -1,23 +1,21 @@
 # README
 
-This method allows to generate fewer requests than
-[requesting Observable API](../2_request_observable_api/README.md) and to deploy
-online, but is more complicated since it requires to manage more files and
-concepts.
+This method allows to generate fewer requests than the
+["requesting Observable API" method](../2_request_observable_api/README.md) and
+to deploy online, but is more complicated since it requires to manage more files
+and concepts.
 
 ## Pros
 
 - generates fewer HTTP requests (the Observable notebook, the
   [runtime.js](https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js)
   Observable library and all the "dynamic dependencies" are bundled in a
-  minified [public/main.min.js](./tissot/step6/public/main.min.js)) JavaScript
-  file
+  minified [public/main.min.js](./joyplot/step6/public/main.min.js) JavaScript
+  file)
 - allows to render only some cells of the notebook
-- does not require to setup hosting before the webpage to be published online,
-  deploys to now.sh infrastructure
-- does not require browser
-  [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility),
-  and it supports old browser thanks to Babel
+- deploys to now.sh infrastructure
+- supports old browser thanks to Babel (does not require browser
+  [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility))
 
 ## Cons
 
@@ -159,17 +157,17 @@ with some of the modules retrieved locally (the notebooks).
   python3 -m http.server
   ```
 
-Note: the resulting code can be found in [./step1](./step1/) directory.
+The resulting code can be found in [joyplot/step1](./joyplot/step1/) directory.
 
 ### Step 2 - bundle JS modules in one file
 
-In step 1, there are 3 local requests for ES modules: main.js, psr-b1919-21.js
-and runtime.js. Moreover, the web server needs to be serving the "technical"
+In step 1, 3 local requests are made for main.js, psr-b1919-21.js and
+runtime.js. Moreover, the web server needs to be serving the "technical"
 node_modules/ directory, that normally should be reserved for development and
 build.
 
-We will instead generate a single ES module, concatenating all the modules using
-[rollup.js](https://rollupjs.org).
+Instead, we will generate a single ES module, concatenating all the modules
+using [rollup.js](https://rollupjs.org).
 
 - as this implies a build step, it's better to separate the sources (in a src/
   directory) from the final files (in a public/ directory):
@@ -258,9 +256,9 @@ We will instead generate a single ES module, concatenating all the modules using
   python3 -m http.server --directory public/
   ```
 
-Note: the resulting code can be found in [./step2](./step2/) directory.
+The resulting code can be found in [joyplot/step2](./joyplot/step2/) directory.
 
-### Step 3 - Bundle dynamically loaded modules
+### Step 3 - Bundle dynamically loaded modules
 
 In step 2, the bundled module helps to save three requests, but it doesn't help
 with the remaining requests done at runtime to other dependencies (here
@@ -268,7 +266,8 @@ d3.min.js). In this step, let's declare these dependencies statically (via
 import statements) and embed them into the bundle.
 
 - exploring the [notebook](https://observablehq.com/@mbostock/psr-b1919-21), we
-  see that it requires "d3@5". It can also be found in the last declaration of
+  see that it requires "d3@5". This information is also present in the last cell
+  declaration in
   [src/notebook/@mbostock/psr-b1919-21.js](./joyplot/step3/src/notebook/@mbostock/psr-b1919-21.js):
 
   ```js
@@ -344,7 +343,7 @@ import statements) and embed them into the bundle.
   npm run build && python3 -m http.server --directory public
   ```
 
-Note: the resulting code can be found in [./step3](./step3/) directory.
+The resulting code can be found in [joyplot/step3](./joyplot/step3/) directory.
 
 ### Step 4 - support old browsers
 
@@ -373,6 +372,7 @@ the JavaScript as well.
   transpiled to non-module format
 
   ```html
+  <!-- JavaScript code to fill the empty placeholders with notebook cells -->
   <script src="./main.js"></script>
   ```
 
@@ -382,9 +382,9 @@ the JavaScript as well.
   npm run build && python3 -m http.server --directory public
   ```
 
-Note: the resulting code can be found in [./step4](./step4/) directory.
+The resulting code can be found in [joyplot/step4](./joyplot/step4/) directory.
 
-### Step 5 - minimize JavaScript code
+### Step 5 - minimize JavaScript code
 
 Additionally we can minimize the size of the JS bundle:
 
@@ -418,9 +418,10 @@ Additionally we can minimize the size of the JS bundle:
   npm run build && python3 -m http.server --directory public
   ```
 
-Note: the resulting code can be found in [./step5](./step5/) directory. The file
-size is 290KB, whereas the original bundle was 589KB and the transpiled one
-(with polyfills to support old browsers) was 593KB.
+The file size is 290KB, whereas the original bundle was 589KB and the transpiled
+one (with polyfills to support old browsers) was 593KB.
+
+The resulting code can be found in [joyplot/step5](./joyplot/step5/) directory.
 
 ### Step 6 - publish online
 
@@ -429,7 +430,7 @@ there is still a need to configure hosting to publish them online. There are
 various solutions to help publish from the cli, let's see one of them:
 [now.sh](https://now.sh).
 
-- install the now development dependency:
+- install "now" as a development dependency:
 
   ```bash
   npm install --save-dev now@16
@@ -455,4 +456,4 @@ various solutions to help publish from the cli, let's see one of them:
 
 - open the now.sh URL in a browser (for example: https://step6-mzjz1zuzg.now.sh)
 
-Note: the resulting code can be found in [./step6](./step6/) directory.
+The resulting code can be found in [joyplot/step6](./joyplot/step6/) directory.
