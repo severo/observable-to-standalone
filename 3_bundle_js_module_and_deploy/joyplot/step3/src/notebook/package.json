@@ -1,0 +1,14 @@
+{
+  "name": "@mbostock/psr-b1919-21",
+  "main": "@mbostock/psr-b1919-21.js",
+  "version": "100.0.0",
+  "homepage": "https://observablehq.com/@mbostock/psr-b1919-21",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "https://observablehq.com/@mbostock"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

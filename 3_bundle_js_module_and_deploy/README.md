@@ -1,12 +1,13 @@
 # README
 
 This method allows to generate fewer requests than
-[requesting Observable](../2_request_observable/README.md) and to deploy online,
-but is more complicated since it requires to manage more files and concepts.
+[requesting Observable API](../2_request_observable_api/README.md) and to deploy
+online, but is more complicated since it requires to manage more files and
+concepts.
 
 ## Pros
 
-- generates fewer HTTP requests (3 Observable notebooks modules and the
+- generates fewer HTTP requests (the Observable notebook and the
   [runtime.js](https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js)
   Observable library are bundled in
   [public/main.js](./tissot/step3/public/main.js))
@@ -19,7 +20,7 @@ but is more complicated since it requires to manage more files and concepts.
 - requires browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
 - does not work locally (offline) since it depends on requests to
-  cdn.jsdeliver.net and unpkg.com, and still generates a lot of HTTP requests
+  cdn.jsdeliver.net
 - complex: requires knowledge about npm, node.js, ES modules, now.sh
 
 Note: even if the bundled module could be transpiled with Babel in order to
@@ -36,34 +37,34 @@ additional features in each step.
 ### Step 1 - setup a npm package
 
 The first step gives code similar to the
-["request Observable method"](../2_request_observale/README.md), but with some
-of the modules retrieved locally (the notebooks).
+["request Observable API" method](../2_request_observable_api/README.md), but
+with some of the modules retrieved locally (the notebooks).
 
 - Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
 - Create a new npm project:
 
   ```bash
-  mkdir -p tissot/step1
-  cd tissot/step1
+  mkdir joyplot
+  cd joyplot
   npm init
   ```
 
-  ```bash
-  package name: (tissot)
+  ```
+  package name: (joyplot)
   version: (1.0.0)
-  description: Standalone version of @fil's Tissot indicatrix Observable notebook
+  description: Standalone version of PSR B1919+21 Observable notebook
   entry point: (index.js)
   test command:
   git repository:
   keywords:
   author:
   license: (ISC)
-  About to write to /home/slesage/dev/4_contratos/liris/observable-to-standalone/advanced/tissot/package.json:
+  About to write to /[...]/joyplot/package.json:
 
   {
-    "name": "tissot",
+    "name": "joyplot",
     "version": "1.0.0",
-    "description": "Standalone version of @fil's Tissot indicatrix Observable notebook",
+    "description": "Standalone version of PSR B1919+21 Observable notebook",
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
@@ -79,16 +80,22 @@ of the modules retrieved locally (the notebooks).
   notebook page, clicking on "…" and then on "Download tarball"):
 
   ```bash
-  mkdir -p src/tissots-indicatrix
-  curl -o /tmp/package.tgz https://api.observablehq.com/@fil/tissots-indicatrix.tgz?v=3
-  tar xf /tmp/package.tgz --directory src/tissots-indicatrix
+  cd joyplot
+  mkdir -p src/notebook
+  curl -o /tmp/package.tgz https://api.observablehq.com/@mbostock/psr-b1919-21.tgz?v=3
+  tar xf /tmp/package.tgz --directory src/notebook
   rm /tmp/package.tgz
-  npm install --save src/tissots-indicatrix
+  npm install --save src/notebook
   ```
 
   Note that it's exactly the same as the
-  [default index method](../1_default_index/README.md): the same .tgz file is
-  downloaded and extracted (in src/tissots-indicatrix/ in that case).
+  ["default Observable export" method](../1_default_observable_export/README.md):
+  the same .tgz file is downloaded and extracted (in src/notebook/ in that
+  case).
+
+  Note that the `npm install --save src/notebook` command has created the
+  `node_modules/` directory and the symbolic link
+  `node_modules/@mbostock/psr-b1919-21` to `src/noteboook`.
 
 * Install the Observable runtime module:
 
@@ -104,15 +111,14 @@ of the modules retrieved locally (the notebooks).
     <head>
       <!-- Minimal HTML head elements -->
       <meta charset="utf-8" />
-      <title>Tissot's indicatrix</title>
+      <title>PSR B1919+21</title>
     </head>
     <body>
       <!-- Title of the page -->
-      <h1>Tissot's indicatrix</h1>
+      <h1>PSR B1919+21</h1>
 
       <!-- Empty placeholders -->
-      <div id="map"></div>
-      <p id="controls"></p>
+      <div id="joyplot"></div>
 
       <!-- JavaScript code to fill the empty placeholders with notebook cells
            Note that the script is not vanilla JavaScript but an ES module
@@ -129,7 +135,7 @@ of the modules retrieved locally (the notebooks).
   // Import Observable notebook
   // Note the relative path via ./node_modules - it's not optimal and will
   // be improved in the next steps
-  import notebook from './node_modules/@fil/tissots-indicatrix/@fil/tissots-indicatrix.js';
+  import notebook from './node_modules/@mbostock/psr-b1919-21/@mbostock/psr-b1919-21.js';
 
   // Import Observable library
   // Same observation
@@ -142,13 +148,9 @@ of the modules retrieved locally (the notebooks).
   const runtime = new Runtime();
   const main = runtime.module(notebook, name => {
     switch (name) {
-      case 'display':
-        // render 'display' notebook cell into <div id="map"></div>
-        return new Inspector(document.querySelector('#map'));
-        break;
-      case 'viewof p':
-        // render 'viewof p' notebook cell into <p id="controls"></p>
-        return new Inspector(document.querySelector('#controls'));
+      case 'chart':
+        // render 'chart' notebook cell into <div id="joyplot"></div>
+        return new Inspector(document.querySelector('#joyplot'));
         break;
     }
   });
@@ -164,13 +166,13 @@ Note: the resulting code can be found in [./step1](./step1/) directory.
 
 ### Step 2 - bundle JS modules in one file
 
-In step 1, there are 4 local requests for ES modules: tissots-indicatrix.js,
-base-maps.js, inputs.js and runtime.js. Moreover, the web server needs to be
-serving the "technical" node_modules/ directory, that normally should be
-reserved for development and build.
+In step 1, there are 3 local requests for ES modules: main.js, psr-b1919-21.js
+and runtime.js. Moreover, the web server needs to be serving the "technical"
+node_modules/ directory, that normally should be reserved for development and
+build.
 
-To simplify this, a single ES module will be generated, using
-[rollup.js](https://rollupjs.org), concatenating all the modules.
+We will instead generate a single ES module, concatenating all the modules using
+[rollup.js](https://rollupjs.org).
 
 - as this implies a build step, it's better to separate the sources (in a src/
   directory) from the final files (in a public/ directory):
@@ -194,11 +196,7 @@ To simplify this, a single ES module will be generated, using
   npm install --save-dev rollup-plugin-node-resolve@5
   ```
 
-- create a configuration file for rollup:
-
-  ```bash
-  editor rollup.config.js
-  ```
+- create the rollup.config.js configuration file for rollup:
 
   ```js
   import * as meta from './package.json';
@@ -226,8 +224,8 @@ To simplify this, a single ES module will be generated, using
   };
   ```
 
-  It tells rollup to take the src/main.js file as the source, to find all the
-  dependencies (`import` statements), and to concatenate all of them in
+  It tells rollup to take the src/main.js file as the source, to find the
+  dependencies (`import` statements), and to concatenate them all into
   public/main.js.
 
 - add the following line in the package.json file to create a npm command that
@@ -245,7 +243,7 @@ To simplify this, a single ES module will be generated, using
 
   ```js
   // Import Observable notebook
-  import notebook from '@fil/tissots-indicatrix';
+  import notebook from '@mbostock/psr-b1919-21';
 
   // Import Observable library
   import {Runtime, Inspector} from '@observablehq/runtime';
@@ -265,16 +263,16 @@ To simplify this, a single ES module will be generated, using
 
 Note: the resulting code can be found in [./step2](./step2/) directory.
 
-Note: the bundled module helps to save three requests, but it's not that much
-comparing to the more than 30 requests to d3 dependencies. There is no easy
-solution to solve this when embedding a notebook, since these dependencies are
-not declared statically (via import statements), but are discovered dynamically
-when parsing the notebooks and rendering the cells.
+Note: the bundled module helps to save three requests, but it doesn't help with
+the remaining requests done at runtime to other dependencies (here, to
+d3.min.js). There is no easy solution when embedding a notebook, since these
+dependencies are not declared statically (via import statements), but are
+discovered dynamically when parsing the notebooks and rendering the cells.
 
 ### Step 3 - publish online
 
 In step 2, the final files are made available in the public/ directory, but
-there is still the need to configure hosting to publish them online. There are
+there is still a need to configure hosting to publish them online. There are
 various solutions to help publish from the cli, let's see one of them:
 [now.sh](https://now.sh).
 
@@ -302,6 +300,6 @@ various solutions to help publish from the cli, let's see one of them:
   npm run deploy
   ```
 
-- open the now.sh URL in a browser (for example: https://step3-eq4kmqwto.now.sh)
+- open the now.sh URL in a browser (for example: https://step3-gwccr4pey.now.sh)
 
 Note: the resulting code can be found in [./step3](./step3/) directory.

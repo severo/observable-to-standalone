@@ -10,9 +10,9 @@ The tutorials will show how to migrate a
 
 Four tutorials are proposed:
 
-- 1. [download and extract tgz from Observable notebook](./1_default_index/README.md)
+- 1. [download and extract tgz from Observable notebook](./1_default_observable_export/README.md)
      to use the default index.html file provided in the tgz file
-- 2. [get JavaScript modules from api.observablehq.com](./2_request_observable/README.md)
+- 2. [get JavaScript modules from api.observablehq.com](./2_request_observable_api/README.md)
      at runtime
 - 3. [bundle JavaScript modules](./3_bundle_js_module_and_deploy) into a single
      module, and deploy to now.sh
