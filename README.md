@@ -8,7 +8,7 @@ standalone webpage.
 
 The recommended method is to bundle all the modules into a single JavaScript
 file, and deploy to now.sh:
-[Method - Bundle all modules into a local JavaScript file](./bundle_js_and_deploy)
+[Bundle all modules into a local JavaScript file](./bundle_js_and_deploy)
 
 Other more trivial methods:
 

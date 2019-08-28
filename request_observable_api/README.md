@@ -1,4 +1,4 @@
-# Method 2 - Request Observable API
+# Method - Request Observable API
 
 This method is a simple way to migrate an
 [Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
