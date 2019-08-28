@@ -9,8 +9,9 @@ concepts.
 
 - generates fewer HTTP requests (the Observable notebook, the
   [runtime.js](https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js)
-  Observable library and all the "dynamic dependencies" are bundled in
-  [public/main.js](./tissot/step3/public/main.js))
+  Observable library and all the "dynamic dependencies" are bundled in a
+  minified [public/main.min.js](./tissot/step6/public/main.min.js)) JavaScript
+  file
 - allows to render only some cells of the notebook
 - does not require to setup hosting before the webpage to be published online,
   deploys to now.sh infrastructure
@@ -417,7 +418,9 @@ Additionally we can minimize the size of the JS bundle:
   npm run build && python3 -m http.server --directory public
   ```
 
-Note: the resulting code can be found in [./step5](./step5/) directory.
+Note: the resulting code can be found in [./step5](./step5/) directory. The file
+size is 290KB, whereas the original bundle was 589KB and the transpiled one
+(with polyfills to support old browsers) was 593KB.
 
 ### Step 6 - publish online
 
