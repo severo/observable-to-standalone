@@ -14,10 +14,8 @@ Four tutorials are proposed:
      to use the default index.html file provided in the tgz file
 - 2. [get JavaScript modules from api.observablehq.com](./2_request_observable_api/README.md)
      at runtime
-- 3. [bundle JavaScript modules](./3_bundle_js_module_and_deploy) into a single
-     module, and deploy to now.sh
-- 4. [rewrite notebook cells to native JavaScript](./4_rewrite_code/README.md)
-     for a pure standalone application
+- 3. [bundle JavaScript modules](./3_bundle_js_and_deploy) into a single
+     JavaScript file, and deploy to now.sh
 
 Note: you could also try
 [zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks.](https://github.com/zzzev/observable-press)
