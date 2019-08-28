@@ -1,6 +1,6 @@
 # Observable notebook to standalone application
 
-Various methods to migrate to migrate an
+Various methods to migrate an
 [Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
 standalone webpage.
 
@@ -17,8 +17,9 @@ Three tutorials are proposed:
 
 ## References
 
-- ["How-To… Embed an Observable Notebook in your CMS"](https://visionscarto.net/observable-jekyll/).
-- [Downloading and Embedding Notebooks](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks)
-- [@observablehq/runtime](https://github.com/observablehq/runtime/blob/master/README.md)
-- [zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks.](https://github.com/zzzev/observable-press) -
-  alternative method
+- ["How-To… Embed an Observable Notebook in your CMS"](https://visionscarto.net/observable-jekyll/):
+  notebook cells embedded into a Jekyll blog,
+- [Downloading and Embedding Notebooks](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks):
+  official Observable documentation,
+- [zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks](https://github.com/zzzev/observable-press):
+  an untested alternative method.
