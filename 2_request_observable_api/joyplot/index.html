@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Minimal HTML head elements -->
+    <meta charset="utf-8" />
+    <title>PSR B1919+21</title>
+  </head>
+  <body>
+    <!-- Title of the page -->
+    <h1>PSR B1919+21</h1>
+
+    <!-- Empty placeholders -->
+    <div id="joyplot"></div>
+
+    <!-- JavaScript code to fill the empty placeholders with notebook cells
+         Note that the script is not vanilla JavaScript but an ES module
+         (type="module")
+      -->
+    <script type="module">
+      // Import Observable notebook
+      // To get the URL, go to the
+      // [notebook](https://observablehq.com/@mbostock/psr-b1919-21), click on
+      // "…" and then on "Download code"
+      import notebook from 'https://api.observablehq.com/@mbostock/psr-b1919-21.js?v=3';
+
+      // Import Observable library
+      import {
+        Runtime,
+        Inspector,
+      } from 'https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js';
+
+      // Render selected notebook cells into DOM elements of this page
+      const runtime = new Runtime();
+      const main = runtime.module(notebook, name => {
+        switch (name) {
+          case 'chart':
+            // render 'chart' notebook cell into <div id="joyplot"></div>
+            return new Inspector(document.querySelector('#joyplot'));
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

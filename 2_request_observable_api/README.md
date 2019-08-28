@@ -1,14 +1,14 @@
 # README
 
 This method is a simple way to migrate an
-[Observable notebook](https://observablehq.com/@fil/tissots-indicatrix/) to a
+[Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
 standalone webpage.
 
 ## Install
 
-Open the [tissot/index.html](./tissot/index.html) file in a browser. It will
-display the same map as in the
-[Tissot's indicatrix Observable notebook](https://observablehq.com/@fil/tissots-indicatrix).
+Open the [joyplot/index.html](./joyplot/index.html) file in a browser. It will
+display the same joyplot as in the
+[PSR B1919+21 Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21).
 
 Alternatively, serve the file from a web server.
 
@@ -23,25 +23,23 @@ Alternatively, serve the file from a web server.
 
 - requires browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility)
-- generates many HTTP requests (41):
-  - 3 - Observable notebooks modules (JS):
-    [Tissot's indicatrix](https://api.observablehq.com/@fil/tissots-indicatrix.js?v=3)
-    and its two dependencies:
-    [@fil/base-map](https://api.observablehq.com/@fil/base-map.js?v=3) and
-    [@jashkenas/inputs](https://api.observablehq.com/@jashkenas/inputs.js?v=3)
-  - 1 - the
+- no resources are loaded locally (index.html apart), and a lot of HTTP requests
+  are generated:
+  - the
+    [Observable notebook module](https://api.observablehq.com/@mbostock/psr-b1919-21.js?v=3)
+  - the
     [runtime.js](https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js)
     Observable library (JS)
-  - 1 - the
-    [110m_land.geojson](https://unpkg.com/visionscarto-world-atlas@0.0.6/world/110m_land.geojson)
-    data file (GeoJSON)
-  - 23 - technical files
-    ([package.json](https://cdn.jsdelivr.net/npm/d3-selection/package.json)) to
-    determine the required dependencies
-  - 13 - dependencies (JS), mainly D3js modules like
-    [d3-geo-projection.min.js](https://cdn.jsdelivr.net/npm/d3-geo-projection@2.7.0/dist/d3-geo-projection.min.js)
+  - [package.json](https://cdn.jsdelivr.net/npm/d3@5/package.json), in order to
+    locate the actual d3 library file to import
+  - the actual
+    [d3 library file](https://cdn.jsdelivr.net/npm/d3@5.11.0/dist/d3.min.js)
+  - generates an HTTP request to get the data from an external location
+  - the
+    [pulsar.csv](https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv)
+    data
 - does not work locally (offline) since it depends on requests to
-  cdn.jsdeliver.net, api.observablehq.com and unpkg.com
+  cdn.jsdeliver.net, api.observablehq.com and to the data file
 - requires to setup hosting before the webpage to be published online
 
 ## How to adapt to another notebook
@@ -55,22 +53,21 @@ The steps to adapt the solution to another notebook, say
 - adapt the HTML template, replacing
 
   ```html
-  <title>Tissot's indicatrix</title>
+  <title>PSR B1919+21</title>
   (...)
   <!-- Title of the page -->
-  <h1>Tissot's indicatrix</h1>
+  <h1>PSR B1919+21</h1>
 
   <!-- Empty placeholders -->
-  <div id="map"></div>
-  <p id="controls"></p>
+  <div id="joyplot"></div>
   ```
 
   with
 
   ```html
-  <!-- Title of the page -->
   <title>Breakout!</title>
   (...)
+  <!-- Title of the page -->
   <h1>Breakout!</h1>
 
   <!-- Empty placeholders -->
@@ -87,13 +84,9 @@ The steps to adapt the solution to another notebook, say
   import notebook from 'https://api.observablehq.com/@fil/tissots-indicatrix.js?v=3';
   (...)
     switch (name) {
-      case 'display':
-        // render 'display' notebook cell into <div id="map"></div>
-        return new Inspector(document.querySelector('#map'));
-        break;
-      case 'viewof p':
-        // render 'viewof p' notebook cell into <p id="controls"></p>
-        return new Inspector(document.querySelector('#controls'));
+      case 'chart':
+        // render 'chart' notebook cell into <div id="joyplot"></div>
+        return new Inspector(document.querySelector('#joyplot'));
         break;
     }
   ```
@@ -120,3 +113,5 @@ The steps to adapt the solution to another notebook, say
   ```
 
 - see the result in [breakout/index.html](./breakout/index.html)
+
+See also [tissot/index.html](./tissot/index.html) for a third example.
