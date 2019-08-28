@@ -1,8 +1,8 @@
-# Method 3 - Bundle all modules into a local JavaScript file
+# Method - Bundle all modules into a local JavaScript file
 
 This method allows to generate fewer requests than the
-["requesting Observable API" method](../2_request_observable_api/README.md) and
-to deploy online, but is more complicated since it requires to manage more files
+["requesting Observable API" method](../request_observable_api/README.md) and to
+deploy online, but is more complicated since it requires to manage more files
 and concepts.
 
 ## Pros
@@ -32,8 +32,8 @@ additional features in each step.
 ### Step 1 - setup a npm package
 
 The first step gives code similar to the
-["request Observable API" method](../2_request_observable_api/README.md), but
-with some of the modules retrieved locally (the notebooks).
+["request Observable API" method](../request_observable_api/README.md), but with
+some of the modules retrieved locally (the notebooks).
 
 - Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
 - Create a new npm project:
@@ -84,7 +84,7 @@ with some of the modules retrieved locally (the notebooks).
   ```
 
   Note that it's exactly the same as the
-  ["default Observable export" method](../1_default_observable_export/README.md):
+  ["default Observable export" method](../default_observable_export/README.md):
   the same .tgz file is downloaded and extracted (in src/notebook/ in that
   case).
 

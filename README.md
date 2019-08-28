@@ -6,14 +6,17 @@ standalone webpage.
 
 ![Screenshot of a joyplot notebook](./assets/joyplot.png)
 
-Three tutorials are proposed:
+The recommended method is to bundle all the modules into a single JavaScript
+file, and deploy to now.sh:
+[Method - Bundle all modules into a local JavaScript file](./bundle_js_and_deploy)
 
-1. [download and extract tgz from Observable notebook](./1_default_observable_export/README.md)
-   to use the default index.html file provided in the tgz file
-2. [get JavaScript modules from api.observablehq.com](./2_request_observable_api/README.md)
-   at runtime
-3. [bundle all modules](./3_bundle_js_and_deploy) into a single JavaScript file,
-   and deploy to now.sh
+Other more trivial methods:
+
+- [download and extract tgz from Observable notebook](./default_observable_export/README.md)
+  to use the default index.html file provided in the tgz file
+- [get JavaScript modules from api.observablehq.com](./request_observable_api/README.md)
+
+  at runtime
 
 ## References
 
