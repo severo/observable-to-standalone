@@ -8,9 +8,9 @@ standalone webpage.
 
 ## Using ObservableHQ runtime
 
-An Observable notebook can be run as a standalone application, outside of the
-Observable platform, using the
-[`@observable/runtime` library](https://github.com/observablehq/runtime).
+An Observable notebook can be run as a standalone application using the
+[`@observable/runtime` library](https://github.com/observablehq/runtime),
+outside of the Observable platform.
 
 The recommended method is to bundle all the modules into a single JavaScript
 file, and deploy to now.sh:
