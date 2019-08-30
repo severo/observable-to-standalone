@@ -1,25 +1,24 @@
 # Method: rewrite from scratch
 
-## How does it compares to notebook embedding using Observable runtime ?
+In this method, we copy/paste the cells to functions in your code, and refactor
+Observable specific features.
+
+How does it compares to notebook embedding using Observable runtime?
 
 ### Pros
 
-- the code can be versioned in a traditional way (comparing to the
+- all the code is available at build time, not at runtime, making it easier to
+  understand, version and test (compare to
   [Observable cells-based code](./bundle_js_and_deploy/joyplot/step6/src/notebook/@mbostock/psr-b1919-21.js))
-- easier to incorporate into your favorite framework
+- more freedom to mold the code into your favorite framework
 
 ### Cons
 
-- you need to manage the state, instead of letting the Observable runtime do it
-  for you
-- related: you cannot make a simple use of Observable features like `viewof`,
-  `width` or [inputs elements](https://observablehq.com/@jashkenas/inputs) for
-  example
-- migration might be a complex and manual process
-
-### Other differences
-
-- the code is available at build time, not at runtime
+- you will need to manage the state, instead of letting the Observable runtime
+  do it for you
+- related: you must recode the useful Observable feature, like `viewof` or
+  `width` for example
+- migration is complex and manual
 
 ## Understand the dependency graph
 
@@ -58,15 +57,7 @@ between cells. They are colored by category:
   from scratch, particularly `mutable` and `viewof` cells, since they manage an
   internal state.
 
-## Async
-
-Observable cells are executed asynchronously. You can think of them as `async`
-functions. There is no easy way to know if a cell is really asynchronous, you
-will have to look at the code.
-
-## Tutorial
-
-### Build and deploy environment
+## Build and deploy environment
 
 Install the build and deploy environment (see the
 ["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details).
@@ -173,7 +164,7 @@ npm run deploy
 
 See [src/main.1.js](./joyplot/src/main.1.js).
 
-### ![lightseagreen color](https://placehold.it/12/20b2aa/000000?text=+) Green cells: import libraries
+## ![lightseagreen color](https://placehold.it/12/20b2aa/000000?text=+) Green cells: import libraries
 
 Install the external libraries (green cells):
 
@@ -187,12 +178,12 @@ Import them in [src/main.js](./joyplot/src/main.js):
 import * as d3 from 'd3';
 ```
 
-### ![gray color](https://placehold.it/12/808080/000000?text=+) Gray cells: nothing to do
+## ![gray color](https://placehold.it/12/808080/000000?text=+) Gray cells: nothing to do
 
 Anonymous cells generally contain markdown text, and can be ignored. But if you
 need to migrate an anonymous cell, just consider it as a black cell (see below).
 
-### ![black color](https://placehold.it/12/1b1e23/000000?text=+) Black cells: copy/paste code into functions
+## ![black color](https://placehold.it/12/1b1e23/000000?text=+) Black cells: copy/paste code into functions
 
 Copy paste the black cells definitions to src/main.js (in the order you want,
 the dependency order will be managed later).
@@ -255,7 +246,7 @@ dependencies as arguments without relying on global variables.
 
 See [src/main.2.js](./joyplot/src/main.2.js).
 
-### ![black color](https://placehold.it/12/1b1e23/000000?text=+) Black cells: build data flow
+## ![black color](https://placehold.it/12/1b1e23/000000?text=+) Black cells: build data flow
 
 In your main code, instantiate the variables using the cell definitions
 functions, and following the dependency graph order: first the cells without
@@ -280,7 +271,7 @@ async function main(d3, DOM, width) {
 
 See [src/main.3.js](./joyplot/src/main.3.js).
 
-### ![mediumpurple color](https://placehold.it/12/9370db/000000?text=+) Purple cells: replace Observable code [the hardest part]
+## ![mediumpurple color](https://placehold.it/12/9370db/000000?text=+) Purple cells: replace Observable code [the hardest part]
 
 In the code above, we still have to provide two variables: `DOM` and `width`,
 that correspond to purple cells (Observable-specific code). You will have to
