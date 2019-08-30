@@ -71,103 +71,103 @@ will have to look at the code.
 Install the build and deploy environment (see the
 ["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details):
 
-- install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
-- create a new npm project:
+First install [node.js and npm](https://nodejs.dev/how-to-install-nodejs) and
+create a new npm project:
 
-  ```bash
-  mkdir joyplot
-  cd joyplot
-  npm init
-  ```
+```bash
+mkdir joyplot
+cd joyplot
+npm init
+```
 
-- install dev dependencies
+Install dev dependencies
 
-  ```bash
-  npm install -save-dev rollup@1 rollup-plugin-node-resolve@5 @babel/core@7 \
-                      rollup-plugin-babel@4 rollup-plugin-terser@5 now@16
-  ```
+```bash
+npm install -save-dev rollup@1 rollup-plugin-node-resolve@5 @babel/core@7 \
+                    rollup-plugin-babel@4 rollup-plugin-terser@5 now@16
+```
 
-- create rollup configuration in [rollup.config.js](./joyplot/rollup.config.js):
+Create rollup configuration in [rollup.config.js](./joyplot/rollup.config.js):
 
-  ```js
-  import * as meta from './package.json';
-  import resolve from 'rollup-plugin-node-resolve';
-  import babel from 'rollup-plugin-babel';
-  import {terser} from 'rollup-plugin-terser';
+```js
+import * as meta from './package.json';
+import resolve from 'rollup-plugin-node-resolve';
+import babel from 'rollup-plugin-babel';
+import {terser} from 'rollup-plugin-terser';
 
-  export default {
-    input: 'src/main.js',
-    onwarn: function(warning, warn) {
-      if (warning.code === 'CIRCULAR_DEPENDENCY') {
-        return;
-      }
-      warn(warning);
-    },
-    output: {
-      file: `public/main.min.js`,
-      name: '${meta.name}',
-      format: 'iife',
-      indent: false,
-      extend: true,
-      banner: `// ${meta.homepage} v${
-        meta.version
-      } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
-    },
-    plugins: [resolve(), babel(), terser()],
-  };
-  ```
+export default {
+  input: 'src/main.js',
+  onwarn: function(warning, warn) {
+    if (warning.code === 'CIRCULAR_DEPENDENCY') {
+      return;
+    }
+    warn(warning);
+  },
+  output: {
+    file: `public/main.min.js`,
+    name: '${meta.name}',
+    format: 'iife',
+    indent: false,
+    extend: true,
+    banner: `// ${meta.homepage} v${
+      meta.version
+    } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
+  },
+  plugins: [resolve(), babel(), terser()],
+};
+```
 
-- add npm scripts, in [package.json](./joyplot/package.json):
+Add npm scripts, in [package.json](./joyplot/package.json):
 
-  ```json
-  "scripts": {
-    "build": "rollup -c",
-    "deploy": "now",
-    "predeploy": "npm run build"
-  }
-  ```
+```json
+"scripts": {
+  "build": "rollup -c",
+  "deploy": "now",
+  "predeploy": "npm run build"
+}
+```
 
-- create the HTML and JS files:
+Create the HTML and JS files:
 
-  ```bash
-  mkdir -p public src
-  touch public/index.html
-  touch src/main.js
-  ```
+```bash
+mkdir -p public src
+touch public/index.html
+touch src/main.js
+```
 
-  - edit [public/index.html](./joyplot/public/index.html):
+Edit [public/index.html](./joyplot/public/index.html):
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <!-- Minimal HTML head elements -->
-        <meta charset="utf-8" />
-        <title>PSR B1919+21</title>
-      </head>
-      <body>
-        <!-- Title of the page -->
-        <h1>PSR B1919+21</h1>
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Minimal HTML head elements -->
+    <meta charset="utf-8" />
+    <title>PSR B1919+21</title>
+  </head>
+  <body>
+    <!-- Title of the page -->
+    <h1>PSR B1919+21</h1>
 
-        <!-- Empty placeholders -->
-        <div id="joyplot"></div>
+    <!-- Empty placeholders -->
+    <div id="joyplot"></div>
 
-        <!-- JavaScript code to fill the empty placeholders -->
-        <script src="./main.min.js"></script>
-      </body>
-    </html>
-    ```
+    <!-- JavaScript code to fill the empty placeholders -->
+    <script src="./main.min.js"></script>
+  </body>
+</html>
+```
 
-  - edit [src/main.js](./joyplot/src/main.js):
+Edit [src/main.js](./joyplot/src/main.js):
 
-    ```js
-    document.querySelector('#joyplot').innerHTML =
-      'Placeholder for the joyplot chart.';
-    ```
+```js
+document.querySelector('#joyplot').innerHTML =
+  'Placeholder for the joyplot chart.';
+```
 
-- test your configuration is working:
+Test your configuration is working:
 
-  ```bash
-  npm run build
-  npm run deploy
-  ```
+```bash
+npm run build
+npm run deploy
+```
