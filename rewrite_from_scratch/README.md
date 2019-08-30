@@ -268,10 +268,9 @@ In the code above, we still have to provide two variables: `DOM` and `width`,
 that correspond to purple cells (Observable-specific code). You will have to
 refactor your code to get the expected behavior.
 
-_Note: maybe there could be a generic solution to manage these variables,
-installing and importing
-[@observable/stdlib](https://www.npmjs.com/package/@observablehq/stdlib)). For
-now, just refactor._
+_Note: maybe a generic solution involving
+[@observable/stdlib](https://www.npmjs.com/package/@observablehq/stdlib) could
+be applied. For now, just refactor._
 
 For example, to replace `width`:
 
