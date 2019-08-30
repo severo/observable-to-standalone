@@ -158,6 +158,8 @@ const main = runtime.module(notebook, name => {
 });
 ```
 
+The code can be found in [joyplot/](./joyplot/).
+
 ## Usage
 
 Build with
@@ -177,5 +179,3 @@ Deploy on now.sh (see https://joyplot-8a5ibi1av.now.sh):
 ```bash
 npm run deploy
 ```
-
-The code can be found in [joyplot/](./joyplot/).

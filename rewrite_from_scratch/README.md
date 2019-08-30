@@ -292,6 +292,8 @@ See [src/main.4.js](./joyplot/src/main.4.js) for this basic solution. Look at
 [src/main.js](./joyplot/src/main.js) for a better (and more complex) solution
 that manages window resize as in the original notebook.
 
+The code can be found in [joyplot/](./joyplot/).
+
 ## Usage
 
 Build with
@@ -311,5 +313,3 @@ Deploy on now.sh (see https://joyplot-p9qmx1pf3.now.sh/):
 ```bash
 npm run deploy
 ```
-
-The code can be found in [joyplot/](./joyplot/).
