@@ -2,13 +2,13 @@
 
 ## How does it compares to notebook embedding using Observable runtime ?
 
-### Pros
+### Pros
 
 - the code can be versioned in a traditional way (comparing to the
   [Observable cells-based code](./bundle_js_and_deploy/joyplot/step6/src/notebook/@mbostock/psr-b1919-21.js))
 - easier to incorporate into your favorite framework
 
-### Cons
+### Cons
 
 - you need to manage the state, instead of letting the Observable runtime do it
   for you
@@ -21,7 +21,7 @@
 
 - the code is available at build time, not at runtime
 
-## Tutorial
+## Tutorial
 
 1. Understand the general data flow in the notebook. Use the
    [Notebook Visualizer](https://observablehq.com/@severo/notebook-visualizer-with-from):
