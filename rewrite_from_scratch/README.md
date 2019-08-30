@@ -291,3 +291,25 @@ const svg = d3
 See [src/main.4.js](./joyplot/src/main.4.js) for this basic solution. Look at
 [src/main.js](./joyplot/src/main.js) for a better (and more complex) solution
 that manages window resize as in the original notebook.
+
+## Usage
+
+Build with
+
+```bash
+npm run build
+```
+
+Run locally with
+
+```bash
+python3 -m http.server --directory public/
+```
+
+Deploy on now.sh (see https://joyplot-p9qmx1pf3.now.sh/):
+
+```bash
+npm run deploy
+```
+
+The code can be found in [joyplot/](./joyplot/).
