@@ -69,8 +69,7 @@ will have to look at the code.
 ### Build and deploy environment
 
 Install the build and deploy environment (see the
-["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details):
-
+["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details).
 First install [node.js and npm](https://nodejs.dev/how-to-install-nodejs) and
 create a new npm project:
 
@@ -170,4 +169,125 @@ Test your configuration is working:
 ```bash
 npm run build
 npm run deploy
+```
+
+### Green cells: import libraries
+
+Install the external libraries (green cells):
+
+```bash
+npm install --save-dev d3@5
+```
+
+Import them in [src/main.js](./joyplot/src/main.js):
+
+```js
+import * as d3 from 'd3';
+```
+
+### Black cells: copy/paste code into functions
+
+Copy paste the black cells definitions to [src/main.js](./joyplot/src/main.js)
+(in the order you want, the dependency order will be managed later).
+
+To migrate a cell, put its content inside an async function that takes the
+dependencies (incoming arrows in the graph) as arguments. This async function
+will return the cell value. For example the cell:
+
+```js
+data = d3
+  .text(
+    'https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv'
+  )
+  .then(data => d3.csvParseRows(data, row => row.map(Number)));
+```
+
+becomes
+
+```js
+const _data = async d3 =>
+  d3
+    .text(
+      'https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv'
+    )
+    .then(data => d3.csvParseRows(data, row => row.map(Number)));
+```
+
+or, in more traditional JavaScript:
+
+```js
+async function _data(d3) {
+  return d3
+    .text(
+      'https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv'
+    )
+    .then(data => d3.csvParseRows(data, row => row.map(Number)));
+}
+```
+
+The cell value will then be available as:
+
+```js
+const data = await _data(d3);
+```
+
+But don't apply this method blindly. Don't use `async` if the cell code is
+synchronous:
+
+```js
+function _x(d3, data, margin, width) {
+  return d3
+    .scaleLinear()
+    .domain([0, data[0].length - 1])
+    .range([margin.left, width - margin.right]);
+}
+```
+
+But ensure to follow the functional programming paradigm: pass all the
+dependencies as arguments without relying on global variables.
+
+### Data flow
+
+In your main code, instantiate the variables using the cell definitions
+functions, and following the dependency graph order: first the cells without
+dependencies, until the most dependent ones:
+
+```js
+// Data flow
+const height = _height();
+const margin = _margin();
+const overlap = overlap();
+const data = await _data();
+const x = _x(d3, data, margin, width);
+const y = _y(d3, data, margin, height);
+const z = _z(d3, data, overlap, y);
+const xAxis = _xAxis(height, margin, d3, x, width);
+const area = _area(d3, x, z);
+const line = _line(area);
+const chart = _chart(d3, DOM, width, height, data, y, area, line, xAxis);
+```
+
+### [the hardest part] Replace Observable code
+
+In the code above, we miss two variables: `width` and `DOM`, that correspond to
+purple cells (Observable-specific code).
+
+Until we find a more generic solution, you will have to refactor your code to
+get the expected behavior. Another solution could be to install and import
+[@observable/stdlib](https://www.npmjs.com/package/@observablehq/stdlib).
+
+For example, to replace `width`:
+
+```js
+const width = 960; // in the notebook, width came from stdlib. We fix its value
+```
+
+and to replace `DOM` in `const svg = d3.select(DOM.svg(width, height));`:
+
+```js
+const svg = d3
+  .select('svg#joyplot')
+  .attr('width', width)
+  .attr('height', height)
+  .attr('viewBox', `"0,0,${width},${height}"`);
 ```
