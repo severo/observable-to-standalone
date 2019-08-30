@@ -311,5 +311,5 @@ See [src/main.4.js](./joyplot/src/main.4.js).
 
 Finally, see [src/main.js](./joyplot/src/main.js) for a better solution that
 manages window resize as in the original notebook. Note that this solution is
-more complex, and naturally a notebook writer will opt for Observable helpers
-like `width` in order to prototype quickly.
+more complex, and naturally a notebook writer will opt for using Observable
+helpers like `width` in order to prototype quickly.
