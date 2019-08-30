@@ -205,17 +205,6 @@ data = d3
 becomes
 
 ```js
-const _data = async d3 =>
-  d3
-    .text(
-      'https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv'
-    )
-    .then(data => d3.csvParseRows(data, row => row.map(Number)));
-```
-
-or, in more traditional JavaScript:
-
-```js
 async function _data(d3) {
   return d3
     .text(
@@ -225,7 +214,7 @@ async function _data(d3) {
 }
 ```
 
-The cell value will then be available as:
+and the cell value will then be available as:
 
 ```js
 const data = await _data(d3);
