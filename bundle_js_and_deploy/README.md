@@ -158,6 +158,8 @@ const main = runtime.module(notebook, name => {
 });
 ```
 
+## Usage
+
 Build with
 
 ```bash
