@@ -5,7 +5,7 @@ function _chart(d3, width, height, data, y, area, line, xAxis) {
   // Notebook cell code were:
   //   const svg = d3.select(DOM.svg(width, height));
   // DOM is specific to @observable/stdlib. We replace it with:
-  d3.select('#joyplot svg').remove(); // not optimal
+  d3.select('#joyplot svg').remove(); // not optimal, but coherent with the original notebook
   const svg = d3
     .select('#joyplot')
     .append('svg')

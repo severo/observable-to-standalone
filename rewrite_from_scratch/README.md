@@ -187,8 +187,8 @@ import * as d3 from 'd3';
 
 ### Black cells: copy/paste code into functions
 
-Copy paste the black cells definitions to [src/main.js](./joyplot/src/main.2.js)
-(in the order you want, the dependency order will be managed later).
+Copy paste the black cells definitions to src/main.js (in the order you want,
+the dependency order will be managed later).
 
 To migrate a cell, put its content inside an async function that takes the
 dependencies (incoming arrows in the graph) as arguments. This async function
@@ -246,6 +246,8 @@ function _x(d3, data, margin, width) {
 But ensure to follow the functional programming paradigm: pass all the
 dependencies as arguments without relying on global variables.
 
+See [src/main.2.js](./joyplot/src/main.2.js);
+
 ### Data flow
 
 In your main code, instantiate the variables using the cell definitions
@@ -254,27 +256,33 @@ dependencies, until the most dependent ones:
 
 ```js
 // Data flow
-const height = _height();
-const margin = _margin();
-const overlap = overlap();
-const data = await _data();
-const x = _x(d3, data, margin, width);
-const y = _y(d3, data, margin, height);
-const z = _z(d3, data, overlap, y);
-const xAxis = _xAxis(height, margin, d3, x, width);
-const area = _area(d3, x, z);
-const line = _line(area);
-const chart = _chart(d3, DOM, width, height, data, y, area, line, xAxis);
+async function main(d3, DOM, width) {
+  const height = _height();
+  const margin = _margin();
+  const overlap = _overlap();
+  const data = await _data(d3);
+  const x = _x(d3, data, margin, width);
+  const y = _y(d3, data, margin, height);
+  const z = _z(d3, data, overlap, y);
+  const xAxis = _xAxis(height, margin, d3, x, width);
+  const area = _area(d3, x, z);
+  const line = _line(area);
+  const chart = _chart(d3, DOM, width, height, data, y, area, line, xAxis);
+}
 ```
+
+See [src/main.3.js](./joyplot/src/main.3.js);
 
 ### [the hardest part] Replace Observable code
 
-In the code above, we miss two variables: `width` and `DOM`, that correspond to
-purple cells (Observable-specific code).
+In the code above, we still have to provide two variables: `DOM` and `width`,
+that correspond to purple cells (Observable-specific code). You will have to
+refactor your code to get the expected behavior.
 
-Until we find a more generic solution, you will have to refactor your code to
-get the expected behavior. Another solution could be to install and import
-[@observable/stdlib](https://www.npmjs.com/package/@observablehq/stdlib).
+_Note: maybe there could be a generic solution to manage these variables,
+installing and importing
+[@observable/stdlib](https://www.npmjs.com/package/@observablehq/stdlib)). For
+now, just refactor._
 
 For example, to replace `width`:
 
@@ -291,3 +299,10 @@ const svg = d3
   .attr('height', height)
   .attr('viewBox', `"0,0,${width},${height}"`);
 ```
+
+See [src/main.4.js](./joyplot/src/main.4.js).
+
+In [src/main.js](./joyplot/src/main.js), we propose a better solution that
+manages window resize as in the original notebook. Note that this solution is
+more complex, and naturally a notebook writer will opt for Observable helpers
+like `width` in order to prototype quickly.

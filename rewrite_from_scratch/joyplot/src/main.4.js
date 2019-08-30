@@ -1,8 +1,16 @@
 import * as d3 from 'd3';
 
 // Cells definitions
-function _chart(d3, DOM, width, height, data, y, area, line, xAxis) {
-  const svg = d3.select(DOM.svg(width, height));
+function _chart(d3, width, height, data, y, area, line, xAxis) {
+  // Notebook cell code were:
+  //   const svg = d3.select(DOM.svg(width, height));
+  // DOM is specific to @observable/stdlib. We replace it with:
+  const svg = d3
+    .select('#joyplot')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('viewBox', `"0,0,${width},${height}"`);
 
   const serie = svg
     .append('g')
@@ -81,3 +89,24 @@ async function _data(d3) {
     )
     .then(data => d3.csvParseRows(data, row => row.map(Number)));
 }
+
+// Data flow
+async function main(d3, width) {
+  const height = _height();
+  const margin = _margin();
+  const overlap = _overlap();
+  const data = await _data(d3);
+  const x = _x(d3, data, margin, width);
+  const y = _y(d3, data, margin, height);
+  const z = _z(d3, data, overlap, y);
+  const xAxis = _xAxis(height, margin, d3, x, width);
+  const area = _area(d3, x, z);
+  const line = _line(area);
+  const chart = _chart(d3, width, height, data, y, area, line, xAxis);
+}
+
+// in the notebook, width came from stdlib. We fix its value, but it would be
+// better to compute it from the window size, and redraw when the window is
+// resized.
+const width = 960;
+main(d3, width);

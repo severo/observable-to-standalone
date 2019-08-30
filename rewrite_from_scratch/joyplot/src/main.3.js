@@ -81,3 +81,18 @@ async function _data(d3) {
     )
     .then(data => d3.csvParseRows(data, row => row.map(Number)));
 }
+
+// Data flow
+async function main(d3, DOM, width) {
+  const height = _height();
+  const margin = _margin();
+  const overlap = _overlap();
+  const data = await _data(d3);
+  const x = _x(d3, data, margin, width);
+  const y = _y(d3, data, margin, height);
+  const z = _z(d3, data, overlap, y);
+  const xAxis = _xAxis(height, margin, d3, x, width);
+  const area = _area(d3, x, z);
+  const line = _line(area);
+  const chart = _chart(d3, DOM, width, height, data, y, area, line, xAxis);
+}
