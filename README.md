@@ -28,24 +28,6 @@ Other more trivial methods:
 A totally different approach to migrate an Observable notebook to a standalone
 application is to rewrite the code from scratch.
 
-Pros:
-
-- the code can be versioned in a traditional way (comparing to the
-  [Observable cells-based code](./bundle_js_and_deploy/joyplot/step6/src/notebook/@mbostock/psr-b1919-21.js))
-- easier to incorporate into your favorite framework
-
-Cons:
-
-- you need to manage the state, instead of letting the Observable runtime do it
-  for you
-- related: you cannot make a simple use of Observable features like `viewof` or
-  [inputs elements](https://observablehq.com/@jashkenas/inputs) for example
-- migration might be a complex and manual process
-
-Other differences:
-
-- the code is available at build time, not at runtime
-
 See the ["rewrite from scratch" method](./rewrite_from_scratch).
 
 ## References
