@@ -5,12 +5,13 @@ function _chart(d3, width, height, data, y, area, line, xAxis) {
   // Notebook cell code were:
   //   const svg = d3.select(DOM.svg(width, height));
   // DOM is specific to @observable/stdlib. We replace it with:
+  d3.select('#joyplot svg').remove(); // not optimal
   const svg = d3
     .select('#joyplot')
     .append('svg')
     .attr('width', width)
     .attr('height', height)
-    .attr('viewBox', `"0,0,${width},${height}"`);
+    .attr('viewBox', `0,0,${width},${height}`);
 
   const serie = svg
     .append('g')
@@ -91,22 +92,35 @@ async function _data(d3) {
 }
 
 // Data flow
-async function main(d3, width) {
-  const height = _height();
-  const margin = _margin();
-  const overlap = _overlap();
+async function main(d3) {
   const data = await _data(d3);
-  const x = _x(d3, data, margin, width);
-  const y = _y(d3, data, margin, height);
-  const z = _z(d3, data, overlap, y);
-  const xAxis = _xAxis(height, margin, d3, x, width);
-  const area = _area(d3, x, z);
-  const line = _line(area);
-  const chart = _chart(d3, width, height, data, y, area, line, xAxis);
+
+  function draw(d3, data, width) {
+    // in the notebook, width came from stdlib. Here, we get it from the window
+    // size, and redraw when the window is resized (see 'resize' eventListener
+    // below).
+    const height = _height();
+    const margin = _margin();
+    const overlap = _overlap();
+    const x = _x(d3, data, margin, width);
+    const y = _y(d3, data, margin, height);
+    const z = _z(d3, data, overlap, y);
+    const xAxis = _xAxis(height, margin, d3, x, width);
+    const area = _area(d3, x, z);
+    const line = _line(area);
+    const chart = _chart(d3, width, height, data, y, area, line, xAxis);
+  }
+
+  let width = document.body.clientWidth;
+  let resizeId = setTimeout(() => draw(d3, data, width), 0);
+  window.addEventListener('resize', () => {
+    const w = document.body.clientWidth;
+    if (width !== w) {
+      width = w;
+      clearTimeout(resizeId);
+      resizeId = setTimeout(() => draw(d3, data, width), 10);
+    }
+  });
 }
 
-// in the notebook, width came from stdlib. We fix its value, but it would be
-// better to compute it from the window size, and redraw when the window is
-// resized.
-const width = 960;
-main(d3, width);
+main(d3);
