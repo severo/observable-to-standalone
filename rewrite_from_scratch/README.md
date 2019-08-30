@@ -66,8 +66,13 @@ will have to look at the code.
 
 ## Tutorial
 
-- Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
-- Create a new npm project:
+### Build and deploy environment
+
+Install the build and deploy environment (see the
+["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details):
+
+- install [node.js and npm](https://nodejs.dev/how-to-install-nodejs)
+- create a new npm project:
 
   ```bash
   mkdir joyplot
@@ -75,98 +80,94 @@ will have to look at the code.
   npm init
   ```
 
-- Install the build and deploy environment (see the
-  ["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details):
+- install dev dependencies
 
-  - install dev dependencies
+  ```bash
+  npm install -save-dev rollup@1 rollup-plugin-node-resolve@5 @babel/core@7 \
+                      rollup-plugin-babel@4 rollup-plugin-terser@5 now@16
+  ```
 
-    ```bash
-    npm install -save-dev rollup@1 rollup-plugin-node-resolve@5 @babel/core@7 \
-                        rollup-plugin-babel@4 rollup-plugin-terser@5 now@16
+- create rollup configuration in [rollup.config.js](./joyplot/rollup.config.js):
+
+  ```js
+  import * as meta from './package.json';
+  import resolve from 'rollup-plugin-node-resolve';
+  import babel from 'rollup-plugin-babel';
+  import {terser} from 'rollup-plugin-terser';
+
+  export default {
+    input: 'src/main.js',
+    onwarn: function(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY') {
+        return;
+      }
+      warn(warning);
+    },
+    output: {
+      file: `public/main.min.js`,
+      name: '${meta.name}',
+      format: 'iife',
+      indent: false,
+      extend: true,
+      banner: `// ${meta.homepage} v${
+        meta.version
+      } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
+    },
+    plugins: [resolve(), babel(), terser()],
+  };
+  ```
+
+- add npm scripts, in [package.json](./joyplot/package.json):
+
+  ```json
+  "scripts": {
+    "build": "rollup -c",
+    "deploy": "now",
+    "predeploy": "npm run build"
+  }
+  ```
+
+- create the HTML and JS files:
+
+  ```bash
+  mkdir -p public src
+  touch public/index.html
+  touch src/main.js
+  ```
+
+  - edit [public/index.html](./joyplot/public/index.html):
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <!-- Minimal HTML head elements -->
+        <meta charset="utf-8" />
+        <title>PSR B1919+21</title>
+      </head>
+      <body>
+        <!-- Title of the page -->
+        <h1>PSR B1919+21</h1>
+
+        <!-- Empty placeholders -->
+        <div id="joyplot"></div>
+
+        <!-- JavaScript code to fill the empty placeholders -->
+        <script src="./main.min.js"></script>
+      </body>
+    </html>
     ```
 
-  - create rollup configuration in
-    [rollup.config.js](./joyplot/rollup.config.js):
+  - edit [src/main.js](./joyplot/src/main.js):
 
     ```js
-    import * as meta from './package.json';
-    import resolve from 'rollup-plugin-node-resolve';
-    import babel from 'rollup-plugin-babel';
-    import {terser} from 'rollup-plugin-terser';
-
-    export default {
-      input: 'src/main.js',
-      onwarn: function(warning, warn) {
-        if (warning.code === 'CIRCULAR_DEPENDENCY') {
-          return;
-        }
-        warn(warning);
-      },
-      output: {
-        file: `public/main.min.js`,
-        name: '${meta.name}',
-        format: 'iife',
-        indent: false,
-        extend: true,
-        banner: `// ${meta.homepage} v${
-          meta.version
-        } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
-      },
-      plugins: [resolve(), babel(), terser()],
-    };
+    document.querySelector('#joyplot').innerHTML =
+      'Placeholder for the joyplot chart.';
     ```
 
-  - add npm scripts, in [package.json](./joyplot/package.json):
+- test your configuration is working:
 
-    ```json
-    "scripts": {
-      "build": "rollup -c",
-      "deploy": "now",
-      "predeploy": "npm run build"
-    }
-    ```
-
-  - create the HTML and JS files:
-
-    ```bash
-    mkdir -p public src
-    touch public/index.html
-    touch src/main.js
-    ```
-
-    - edit [public/index.html](./joyplot/public/index.html):
-
-      ```html
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <!-- Minimal HTML head elements -->
-          <meta charset="utf-8" />
-          <title>PSR B1919+21</title>
-        </head>
-        <body>
-          <!-- Title of the page -->
-          <h1>PSR B1919+21</h1>
-
-          <!-- Empty placeholders -->
-          <div id="joyplot"></div>
-
-          <!-- JavaScript code to fill the empty placeholders -->
-          <script src="./main.min.js"></script>
-        </body>
-      </html>
-      ```
-
-    - edit [src/main.js](./joyplot/src/main.js):
-
-      ```js
-      document.querySelector('#joyplot').innerHTML =
-        'Placeholder for the joyplot chart.';
-      ```
-
-  - test your configuration is working:
-
-    ```bash
-    npm run build
-    npm run deploy
-    ```
+  ```bash
+  npm run build
+  npm run deploy
+  ```
