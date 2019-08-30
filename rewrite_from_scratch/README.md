@@ -232,8 +232,8 @@ function _x(d3, data, margin, width) {
 }
 ```
 
-But ensure to follow the functional programming paradigm: pass all the
-dependencies as arguments without relying on global variables.
+Ensure to follow the functional programming paradigm: pass all the dependencies
+as arguments without relying on global variables.
 
 See [src/main.2.js](./joyplot/src/main.2.js).
 
