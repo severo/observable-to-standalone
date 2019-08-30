@@ -33,7 +33,7 @@ for background). Draw its dependency graph using the
 Each node corresponds to a notebook cell, and arrows represent a dependency
 between cells. They are colored by category:
 
-- <span style="color: gray; text-decoration: underline">Gray cells</span> are
+- ![gray color](https://placehold.it/12/808080/000000?text=+) Gray cells are
   anonymous (non-named) cells and will generally not be migrated. They often
   contain explanation texts, and no other cell can depend on them, so they
   shouldn't break the code if removed. But, be careful: if your main chart cell
