@@ -157,7 +157,7 @@ Edit [public/index.html](./joyplot/public/index.html):
 </html>
 ```
 
-Edit [src/main.js](./joyplot/src/main.js):
+Edit [src/main.js](./joyplot/src/main.1.js):
 
 ```js
 document.querySelector('#joyplot').innerHTML =
@@ -187,7 +187,7 @@ import * as d3 from 'd3';
 
 ### Black cells: copy/paste code into functions
 
-Copy paste the black cells definitions to [src/main.js](./joyplot/src/main.js)
+Copy paste the black cells definitions to [src/main.js](./joyplot/src/main.2.js)
 (in the order you want, the dependency order will be managed later).
 
 To migrate a cell, put its content inside an async function that takes the
