@@ -1,0 +1,22 @@
+{
+  "name": "joyplot",
+  "version": "1.0.0",
+  "description": "Standalone version of PSR B1919+21 Observable notebook",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "deploy": "now",
+    "predeploy": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "d3": "^5.11.0",
+    "now": "^16.1.2",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1"
+  }
+}
