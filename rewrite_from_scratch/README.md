@@ -47,8 +47,7 @@ between cells. They are colored by category:
   contain explanation texts, and no other cell can depend on them, so they
   shouldn't break the code if removed. But, be careful: if your main chart cell
   is not named, you will still want to copy its code.
-- ![black color](https://placehold.it/12/1b1e23/000000?text=+)
-  <span style="color: black; text-decoration: underline">Black cells</span> are
+- ![black color](https://placehold.it/12/1b1e23/000000?text=+) Black cells are
   the actual notebook code written by the user, and you will want to copy it to
   your project.
 - ![mediumpurple color](https://placehold.it/12/9370db/000000?text=+) Purple
