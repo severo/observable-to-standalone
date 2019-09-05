@@ -1,4 +1,4 @@
-# Method: rewrite from scratch
+# Method: Rewrite from scratch
 
 In this method, we copy/paste the cells to functions in your code, and refactor
 Observable specific features.
@@ -62,9 +62,9 @@ between cells. They are colored by category:
 ## Build and deploy environment
 
 Install the build and deploy environment (see the
-["bundle JS and deploy" method](../bundle_js_and_deploy/) for more details).
-First install [node.js and npm](https://nodejs.dev/how-to-install-nodejs) and
-create a new npm project:
+["Bundle" method](../bundle_js_and_deploy/) for more details). First install
+[node.js and npm](https://nodejs.dev/how-to-install-nodejs) and create a new npm
+project:
 
 ```bash
 mkdir joyplot

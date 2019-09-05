@@ -1,7 +1,7 @@
-# Method - Bundle all modules into a local JavaScript file
+# Method - Bundle
 
 This method allows to generate fewer requests than the
-["requesting Observable API" method](../request_observable_api/README.md) and to
+["Request Observable API" method](../request_observable_api/README.md) and to
 deploy online, but is more complicated since it requires to manage more files
 and concepts.
 
