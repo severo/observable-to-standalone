@@ -10,7 +10,18 @@ Open the [joyplot/index.html](./joyplot/index.html) file in a browser. It will
 display the same joyplot as in the
 [PSR B1919+21 Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21).
 
-Alternatively, serve the file from a web server.
+Alternatively, serve the file from a web server, locally at
+http://localhost:8000 with:
+
+```
+python3 -m http.server --directory joyplot
+```
+
+or deploy on now.sh (see the [result](https://joyplot-96iun3ktp.now.sh/)) with:
+
+```
+npx now joyplot
+```
 
 ## Pros
 

@@ -18,10 +18,19 @@ mkdir joyplot
 curl -o /tmp/package.tgz https://api.observablehq.com/@mbostock/psr-b1919-21.tgz?v=3
 tar xf /tmp/package.tgz --directory joyplot
 rm /tmp/package.tgz
+```
+
+and serve locally at http://localhost:8000 with:
+
+```
 python3 -m http.server --directory joyplot
 ```
 
-and open a browser at http://localhost:8000.
+or deploy on now.sh (see the [result](https://joyplot-10jbhd7e8.now.sh/)) with:
+
+```
+echo '{"builds": [{ "src": "**/*.{js,html,css}", "use": "@now/static" }]}' > joyplot/now.json; npx now joyplot; rm joyplot/now.json
+```
 
 ## Pros
 
