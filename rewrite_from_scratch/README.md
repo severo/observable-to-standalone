@@ -294,7 +294,7 @@ that manages window resize as in the original notebook.
 
 The code can be found in [joyplot/](./joyplot/).
 
-## Usage
+## Usage
 
 Build with
 
