@@ -34,7 +34,10 @@ Other more trivial methods:
 
 - download and extract tgz from Observable notebook to use the default
   index.html file provided in the tgz file:
-  ["Default Observable export" method](./rewrite_from_scratch),
+  ["Default Observable export" method](./rewrite_from_scratch)
+
+  [![Diagram for the "Default Observable export" method](./assets/default_observable_export.png)](./rewrite_from_scratch)
+
 - get JavaScript modules from api.observablehq.com at runtime:
   ["Request Observable API" method](./rewrite_from_scratch).
 
