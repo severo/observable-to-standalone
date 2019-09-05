@@ -36,7 +36,7 @@ Other more trivial methods:
   index.html file provided in the tgz file:
   ["Default Observable export" method](./rewrite_from_scratch)
 
-  [![Diagram for the "Default Observable export" method](./assets/default_observable_export.png)](./rewrite_from_scratch)
+  [![Diagram for the "Default Observable export" method](./assets/default_observable_export_method.png)](./rewrite_from_scratch)
 
 - get JavaScript modules from api.observablehq.com at runtime:
   ["Request Observable API" method](./rewrite_from_scratch).
