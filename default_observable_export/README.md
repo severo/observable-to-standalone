@@ -26,7 +26,7 @@ and serve locally at http://localhost:8000 with:
 python3 -m http.server --directory joyplot
 ```
 
-or deploy on now.sh (see the [result](https://joyplot-10jbhd7e8.now.sh/)) with:
+or deploy on now.sh (see https://joyplot-10jbhd7e8.now.sh/) with:
 
 ```
 echo '{"builds": [{ "src": "**/*.{js,html,css}", "use": "@now/static" }]}' > joyplot/now.json; npx now joyplot; rm joyplot/now.json
