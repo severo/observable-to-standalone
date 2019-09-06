@@ -32,6 +32,13 @@ file: ["Bundle" method](./bundle)
 
 [![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle)
 
+See it in action by Philippe Rivière on the Spherical contours notebook:
+
+- [Original notebook](https://observablehq.com/@fil/spherical-contours) [@observablehq]
+- [Prepared notebook](https://observablehq.com/@fil/standalone-app-notebook) [@observablehq]
+- [Self-contained project](https://github.com/Fil/SphericalContoursStandalone) [@github]
+- [Self-contained app](https://sphericalcontoursstandalone.fil.now.sh/) [@now.sh]
+
 Two more simpler methods are possible. The first one is to download and extract
 tgz from Observable notebook to use the default index.html file provided in the
 tgz file: ["Default Observable export" method](./default_observable_export)
