@@ -53,7 +53,6 @@ npx now joyplot
     data
 - does not work locally (offline) since it depends on requests to
   cdn.jsdeliver.net, api.observablehq.com and to the data file
-- requires to setup hosting before the webpage to be published online
 
 ## How to adapt to another notebook
 

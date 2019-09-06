@@ -1,9 +1,10 @@
 # Method - Bundle all modules into a local JavaScript file
 
 This method allows to generate fewer requests than the
-["requesting Observable API" method](../request_observable_api/README.md) and to
-deploy online, but is more complicated since it requires to manage more files
-and concepts.
+["requesting Observable API" method](../request_observable_api/README.md), but
+is more complicated since it requires to manage more files and concepts.
+
+![Diagram for the "Bundle" method](../../assets/bundle_method.png)]
 
 ## Pros
 
@@ -13,7 +14,6 @@ and concepts.
   minified [public/main.min.js](./joyplot/step6/public/main.min.js) JavaScript
   file)
 - allows to render only some cells of the notebook
-- deploys to now.sh infrastructure
 - supports old browser thanks to Babel (does not require browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility))
 

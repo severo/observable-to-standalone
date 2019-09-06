@@ -64,4 +64,3 @@ echo '{"builds": [{ "src": "**/*.{js,html,css}", "use": "@now/static" }]}' > joy
   - [pulsar.csv](https://gist.githubusercontent.com/borgar/31c1e476b8e92a11d7e9/raw/0fae97dab6830ecee185a63c1cee0008f6778ff6/pulsar.csv)
 - does not work locally (offline) since it depends on requests to
   cdn.jsdeliver.net and to the data file
-- requires to setup hosting before the webpage to be published online
