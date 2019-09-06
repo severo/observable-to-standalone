@@ -43,7 +43,7 @@ Other more trivial methods:
 - get JavaScript modules from api.observablehq.com at runtime:
   ["Request Observable API" method](./request_observable_api)
 
-  [![Diagram for the "Request Observable API" method](./assets/default_observable_export_method.png)](./request_observable_api)
+  [![Diagram for the "Request Observable API" method](./assets/request_observable_api_method.png)](./request_observable_api)
 
 ## Independent of ObservableHQ runtime
 
