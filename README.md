@@ -28,7 +28,7 @@ An Observable notebook can be run as a standalone application using the
 outside of the Observable platform.
 
 The recommended method is to bundle all the modules into a single JavaScript
-file, and deploy it to now.sh: ["Bundle" method](./bundle)
+file: ["Bundle" method](./bundle)
 
 [![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle)
 
@@ -62,4 +62,5 @@ application is to rewrite the code from scratch:
 
 ## Credits
 
-Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
+Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain
+Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
