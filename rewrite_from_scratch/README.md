@@ -3,6 +3,8 @@
 In this method, we copy/paste the cells to functions in your code, and refactor
 Observable specific features.
 
+[![Diagram for the "Rewrite from scratch" method](../assets/rewrite_from_scratch_method.png)](./rewrite_from_scratch)
+
 ## Comparison with notebook embedding
 
 How does it compares to notebook embedding using Observable runtime?

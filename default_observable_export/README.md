@@ -4,6 +4,8 @@ This method is the simplest way to "migrate" an
 [Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
 standalone webpage.
 
+[![Diagram for the "Default Observable export" method](../assets/default_observable_export_method.png)](./default_observable_export)
+
 ## Install
 
 - Go to the [notebook](https://observablehq.com/@mbostock/psr-b1919-21), click
