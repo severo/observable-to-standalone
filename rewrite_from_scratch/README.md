@@ -31,7 +31,7 @@ Understand the general data flow in your notebook (read
 for background). Draw its dependency graph using the
 [Notebook Visualizer](https://observablehq.com/@severo/notebook-visualizer-with-from?id=@mbostock/psr-b1919-21):
 
-![Notebook Visualizer on @mbostock/psr-b1919-21](../assets/notebook_visualizer.svg)
+![Notebook Visualizer on @mbostock/psr-b1919-21](../assets/notebook_visualizer.png)
 
 Each node corresponds to a notebook cell, and arrows represent a dependency
 between cells. They are colored by category:
