@@ -32,18 +32,16 @@ file, and deploy it to now.sh: ["Bundle" method](./bundle_js_and_deploy)
 
 [![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle_js_and_deploy)
 
-Other more trivial methods:
+Two more trivial methods are possible. The first one is to download and extract
+tgz from Observable notebook to use the default index.html file provided in the
+tgz file: ["Default Observable export" method](./default_observable_export)
 
-- download and extract tgz from Observable notebook to use the default
-  index.html file provided in the tgz file:
-  ["Default Observable export" method](./default_observable_export)
+[![Diagram for the "Default Observable export" method](./assets/default_observable_export_method.png)](./default_observable_export)
 
-  [![Diagram for the "Default Observable export" method](./assets/default_observable_export_method.png)](./default_observable_export)
+The second trivial method is to get JavaScript modules from api.observablehq.com
+at runtime: ["Request Observable API" method](./request_observable_api)
 
-- get JavaScript modules from api.observablehq.com at runtime:
-  ["Request Observable API" method](./request_observable_api)
-
-  [![Diagram for the "Request Observable API" method](./assets/request_observable_api_method.png)](./request_observable_api)
+[![Diagram for the "Request Observable API" method](./assets/request_observable_api_method.png)](./request_observable_api)
 
 ## Independent of ObservableHQ runtime
 
