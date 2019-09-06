@@ -49,7 +49,9 @@ Other more trivial methods:
 
 A totally different approach to migrate an Observable notebook to a standalone
 application is to rewrite the code from scratch:
-["Rewrite from scratch" method](./rewrite_from_scratch).
+["Rewrite from scratch" method](./rewrite_from_scratch)
+
+[![Diagram for the "Rewrite from scratch" method](./assets/rewrite_from_scratch_method.png)](./rewrite_from_scratch)
 
 ## References
 
