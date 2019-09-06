@@ -13,7 +13,7 @@ as an example throughout this repository.
 Examine the results of the migration to a standalone application:
 
 - [standalone joyplot](https://joyplot-8a5ibi1av.now.sh/) using the
-  ["Bundle" method](./bundle_js_and_deploy)
+  ["Bundle" method](./bundle)
 - [standalone joyplot](https://joyplot-10jbhd7e8.now.sh/) using the trivial
   ["Default Observable export" method](./default_observable_export).
 - [standalone joyplot](https://joyplot-96iun3ktp.now.sh/) using the trivial
@@ -28,9 +28,9 @@ An Observable notebook can be run as a standalone application using the
 outside of the Observable platform.
 
 The recommended method is to bundle all the modules into a single JavaScript
-file, and deploy it to now.sh: ["Bundle" method](./bundle_js_and_deploy)
+file, and deploy it to now.sh: ["Bundle" method](./bundle)
 
-[![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle_js_and_deploy)
+[![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle)
 
 Two more trivial methods are possible. The first one is to download and extract
 tgz from Observable notebook to use the default index.html file provided in the

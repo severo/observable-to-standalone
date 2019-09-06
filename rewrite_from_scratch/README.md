@@ -3,7 +3,7 @@
 In this method, we copy/paste the cells to functions in your code, and refactor
 Observable specific features.
 
-[![Diagram for the "Rewrite from scratch" method](../assets/rewrite_from_scratch_method.png)](./rewrite_from_scratch)
+![Diagram for the "Rewrite from scratch" method](../assets/rewrite_from_scratch_method.png)
 
 ## Comparison with notebook embedding
 
@@ -13,7 +13,7 @@ How does it compares to notebook embedding using Observable runtime?
 
 - all the code is available at build time, not at runtime, making it easier to
   understand, version and test (compare to
-  [Observable cells-based code](./bundle_js_and_deploy/joyplot/step6/src/notebook/@mbostock/psr-b1919-21.js))
+  [Observable cells-based code](./bundle/joyplot/step6/src/notebook/@mbostock/psr-b1919-21.js))
 - more freedom to mold the code into your favorite framework
 
 ### Cons
@@ -62,8 +62,8 @@ between cells. They are colored by category:
 
 ## Build and deploy environment
 
-Install the build and deploy environment (see the
-["Bundle" method](../bundle_js_and_deploy/) for more details). First install
+Install the build and deploy environment (see the ["Bundle" method](../bundle/)
+for more details). First install
 [node.js and npm](https://nodejs.dev/how-to-install-nodejs) and create a new npm
 project:
 

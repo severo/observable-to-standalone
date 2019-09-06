@@ -4,7 +4,7 @@ This method is a simple way to migrate an
 [Observable notebook](https://observablehq.com/@mbostock/psr-b1919-21) to a
 standalone webpage.
 
-[![Diagram for the "Request Observable API" method](../assets/request_observable_api_method.png)](./request_observable_api)
+![Diagram for the "Request Observable API" method](../assets/request_observable_api_method.png)
 
 ## Install
 

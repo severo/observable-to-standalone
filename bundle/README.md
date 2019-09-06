@@ -5,7 +5,7 @@ This method allows to generate fewer requests than the
 deploy online, but is more complicated since it requires to manage more files
 and concepts.
 
-[![Diagram for the "Bundle" method](../assets/bundle_method.png)](./bundle_js_and_deploy)
+![Diagram for the "Bundle" method](../assets/bundle_method.png)]
 
 ## Pros
 
