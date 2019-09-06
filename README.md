@@ -14,9 +14,9 @@ Examine the results of the migration to a standalone application:
 
 - [standalone joyplot](https://joyplot-8a5ibi1av.now.sh/) using the
   ["Bundle" method](./bundle)
-- [standalone joyplot](https://joyplot-10jbhd7e8.now.sh/) using the trivial
+- [standalone joyplot](https://joyplot-10jbhd7e8.now.sh/) using the simpler
   ["Default Observable export" method](./default_observable_export).
-- [standalone joyplot](https://joyplot-96iun3ktp.now.sh/) using the trivial
+- [standalone joyplot](https://joyplot-96iun3ktp.now.sh/) using the simpler
   ["Request Observable API" method](./request_observable_api).
 - [standalone joyplot](https://joyplot-p9qmx1pf3.now.sh/) using the
   ["Rewrite from scratch" method](./rewrite_from_scratch).
@@ -28,17 +28,17 @@ An Observable notebook can be run as a standalone application using the
 outside of the Observable platform.
 
 The recommended method is to bundle all the modules into a single JavaScript
-file: ["Bundle" method](./bundle)
+file, and serve it locally or deploy it to a web server with now.sh: ["Bundle" method](./bundle)
 
 [![Diagram for the "Bundle" method](./assets/bundle_method.png)](./bundle)
 
-Two more trivial methods are possible. The first one is to download and extract
+Two simpler methods are possible. The first one is to download and extract
 tgz from Observable notebook to use the default index.html file provided in the
 tgz file: ["Default Observable export" method](./default_observable_export)
 
 [![Diagram for the "Default Observable export" method](./assets/default_observable_export_method.png)](./default_observable_export)
 
-The second trivial method is to get JavaScript modules from api.observablehq.com
+The second simpler method is to get JavaScript modules from api.observablehq.com
 at runtime: ["Request Observable API" method](./request_observable_api)
 
 [![Diagram for the "Request Observable API" method](./assets/request_observable_api_method.png)](./request_observable_api)
@@ -62,5 +62,4 @@ application is to rewrite the code from scratch:
 
 ## Credits
 
-Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain
-Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
+Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
