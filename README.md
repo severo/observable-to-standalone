@@ -59,3 +59,7 @@ application is to rewrite the code from scratch:
   official Observable documentation,
 - [zzzev/observable-press: An opinionated way to publish Observable (observablehq.com) notebooks](https://github.com/zzzev/observable-press):
   an untested alternative method.
+
+## Credits
+
+Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
