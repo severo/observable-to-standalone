@@ -21,8 +21,10 @@ more complicated since it requires to manage more files and concepts.
 
 - complex: requires knowledge about npm, node.js, ES modules, now.sh, rollup,
   babel, terser
-- CSV data still must be downloaded from GitHub. Thus, the application cannot
-  run offline.
+- CSV data still must be downloaded from GitHub, thus the application cannot run
+  offline. See
+  [Standalone App Notebook](https://observablehq.com/@fil/standalone-app-notebook)
+  for a possible way to load data locally.
 
 ## Tutorial
 
