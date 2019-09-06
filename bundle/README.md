@@ -4,7 +4,7 @@ This method allows to generate fewer requests than the
 ["Request Observable API" method](../request_observable_api/README.md), but is
 more complicated since it requires to manage more files and concepts.
 
-![Diagram for the "Bundle" method](../assets/bundle_method.png)]
+![Diagram for the "Bundle" method](../assets/bundle_method.png)
 
 ## Pros
 
