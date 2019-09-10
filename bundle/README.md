@@ -6,9 +6,52 @@ more complicated since it requires to manage more files and concepts.
 
 ![Diagram for the "Bundle" method](../assets/bundle_method.png)
 
-**TL;DR** This tutorial gives details about every step. Go to
+## TL;DR
+
+This tutorial gives details about every step. Go to
 [Standalone App Notebook](https://github.com/Fil/SphericalContoursStandalone/)
-for the direct solution.
+or [joyplot/](./joyplot/) for the direct solution.
+
+Basic usage:
+
+- first install
+
+  ```bash
+  cd joyplot
+  npm run build
+  ```
+
+- run locally
+
+  ```bash
+  npm run serve
+  ```
+
+- deploy on now.sh (see https://joyplot-ag4zeux4u.now.sh/):
+
+  ```bash
+  npm run deploy
+  ```
+
+Advanced usage:
+
+- update the notebook:
+
+  ```
+  npm run notebook
+  ```
+
+- update the data:
+
+  ```
+  npm run data
+  ```
+
+- remove the temporary files:
+
+  ```
+  npm run clean
+  ```
 
 ## Pros
 
@@ -20,12 +63,12 @@ for the direct solution.
 - allows to render only some cells of the notebook
 - supports old browser thanks to Babel (does not require browser
   [compatibility with ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Browser_compatibility))
-- CSV data can be downloaded from GitHub, thus the application can run offline.
+- CSV data is downloaded from GitHub, so that the application runs offline.
 
 ## Cons
 
 - complex: requires knowledge about npm, node.js, ES modules, now.sh, rollup,
-  babel, terser
+  babel, terser...
 
 ## Tutorial
 
@@ -693,7 +736,7 @@ of them: [now.sh](https://now.sh).
   ```
 
 - open the now.sh URL in a browser (for example:
-  https://joyplot-4i75j3lhv.now.sh/)
+  https://joyplot-ag4zeux4u.now.sh/)
 
 Note that it works only because the we already downloaded the data and notebook,
 and the `now` command uploaded the vendor/, public/ an public/data/ directories.
@@ -721,7 +764,7 @@ Let's automate it a little bit:
 
 - test it from a fresh copy (we use `npx now` here to show that the deploy works
   without any of the following directories being present locally: node_modules,
-  public, vendor):
+  public, or vendor):
 
   ```
   npm run clean
@@ -731,23 +774,3 @@ Let's automate it a little bit:
 ### Final code
 
 The code can be found in [joyplot/](./joyplot/) directory.
-
-## Usage
-
-Build with
-
-```bash
-npm run build
-```
-
-Run locally with
-
-```bash
-npm run serve
-```
-
-Deploy on now.sh (see https://joyplot-8a5ibi1av.now.sh):
-
-```bash
-npm run deploy
-```
