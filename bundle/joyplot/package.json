@@ -9,7 +9,7 @@
     "clean": "rm -rf node_modules public vendor",
     "data": "rm -rf public/data && mkdir -p public/data && node bin/download-data.js",
     "deploy": "now",
-    "notebook": "rm -f vendor/notebook.tgz && mkdir -p vendor && curl -o vendor/notebook.tgz $npm_package_custom_notebook && npm install --save-dev aaa_notebook@file:vendor/notebook.tgz",
+    "notebook": "rm -f vendor/notebook.tgz && mkdir -p vendor && curl -o vendor/notebook.tgz $npm_package_custom_notebook && npm install --save-optional aaa_notebook@file:vendor/notebook.tgz",
     "preserve": "npm run build:light",
     "serve": "http-server public/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +25,6 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@observablehq/runtime": "^4.4.3",
-    "aaa_notebook": "file:vendor/notebook.tgz",
     "d3": "^5.12.0",
     "d3-require": "^1.2.3",
     "http-server": "^0.11.1",
@@ -36,5 +35,8 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1"
+  },
+  "optionalDependencies": {
+    "aaa_notebook": "file:vendor/notebook.tgz"
   }
 }

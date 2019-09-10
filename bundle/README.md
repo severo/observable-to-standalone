@@ -80,16 +80,30 @@ some of the modules retrieved locally (the notebooks).
   ```bash
   mkdir -p vendor/
   curl -o vendor/notebook.tgz https://api.observablehq.com/@mbostock/psr-b1919-21.tgz?v=3
-  npm install --save-dev aaa_notebook@file:vendor/notebook.tgz
+  npm install --save-optional aaa_notebook@file:vendor/notebook.tgz
   ```
 
   Note that it's exactly the same as the
   ["default Observable export" method](../default_observable_export/README.md):
   the same .tgz file is downloaded.
 
-  Note that the `npm install --save-dev aaa_notebook@file:vendor/notebook.tgz`
+  Note that the
+  `npm install --save-optional observable_notebook@file:vendor/notebook.tgz`
   command has created the `node_modules/` directory and extracted the tgz file
   to `node_modules/aaa_notebook`.
+
+  Note also that it created
+
+  ```json
+  "optionalDependencies": {
+    "aaa_notebook": "file:vendor/notebook.tgz"
+  }
+  ```
+
+  in package.json. This way, if `npm install` is launched in a fresh version of
+  this repository, the notebook package will not be installed. It's OK because
+  the vendor/notebook.tgz would not be available at this stage.
+  `npm run notebook` would then install it.
 
 - Let's add a script to automate this each time we want to update the notebook
   to a new version:
