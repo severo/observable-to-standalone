@@ -159,8 +159,6 @@ some of the modules retrieved locally (the notebooks).
   python3 -m http.server
   ```
 
-The resulting code can be found in [joyplot/step1](./joyplot/step1/) directory.
-
 ### Step 2 - bundle JS modules in one file
 
 In step 1, 3 local requests are made for main.js, psr-b1919-21.js and
@@ -258,8 +256,6 @@ using [rollup.js](https://rollupjs.org).
   python3 -m http.server --directory public/
   ```
 
-The resulting code can be found in [joyplot/step2](./joyplot/step2/) directory.
-
 ### Step 3 - Bundle dynamically loaded modules
 
 In step 2, the bundled module helps to save three requests, but it doesn't help
@@ -348,8 +344,6 @@ import statements) and embed them into the bundle.
   npm run build && python3 -m http.server --directory public
   ```
 
-The resulting code can be found in [joyplot/step3](./joyplot/step3/) directory.
-
 ### Step 4 - support old browsers
 
 As all the required modules have been bundled into one file (public/main.js), we
@@ -386,8 +380,6 @@ the JavaScript as well.
   ```bash
   npm run build && python3 -m http.server --directory public
   ```
-
-The resulting code can be found in [joyplot/step4](./joyplot/step4/) directory.
 
 ### Step 5 - minimize JavaScript code
 
@@ -426,8 +418,6 @@ Additionally we can minimize the size of the JS bundle:
 The file size is 290KB, whereas the original bundle was 589KB and the transpiled
 one (with polyfills to support old browsers) was 593KB.
 
-The resulting code can be found in [joyplot/step5](./joyplot/step5/) directory.
-
 ### Step 6 - publish online
 
 In step 5, the final files are made available in the public/ directory, but
@@ -461,4 +451,4 @@ various solutions to help publish from the cli, let's see one of them:
 
 - open the now.sh URL in a browser (for example: https://step6-mzjz1zuzg.now.sh)
 
-The resulting code can be found in [joyplot/step6](./joyplot/step6/) directory.
+The resulting code can be found in [joyplot/](./joyplot/) directory.

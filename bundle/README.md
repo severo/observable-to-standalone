@@ -28,7 +28,7 @@ more complicated since it requires to manage more files and concepts.
 
 ## Tutorial
 
-See [step_by_step/](./step_by_step/README.md) to read about the details of the
+See [STEP_BY_STEP.md](./STEP_BY_STEP.md) to read about the details of the
 solution. Here we only give the method for quick replication.
 
 Install [node.js and npm](https://nodejs.dev/how-to-install-nodejs).
