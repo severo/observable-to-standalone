@@ -6,7 +6,7 @@ more complicated since it requires to manage more files and concepts.
 
 ![Diagram for the "Bundle" method](../assets/bundle_method.png)
 
-## TL;DR
+## TL;DR
 
 This tutorial gives details about every step. Go to
 [Standalone App Notebook](https://github.com/Fil/SphericalContoursStandalone/)
