@@ -12,47 +12,6 @@ This tutorial gives details about every step. Go to
 [Standalone App Notebook](https://github.com/Fil/SphericalContoursStandalone/)
 or [joyplot/](./joyplot/) for the direct solution.
 
-Basic usage:
-
-- first install
-
-  ```bash
-  cd joyplot
-  npm run build
-  ```
-
-- run locally
-
-  ```bash
-  npm run serve
-  ```
-
-- deploy on now.sh (see https://joyplot-ag4zeux4u.now.sh/):
-
-  ```bash
-  npm run deploy
-  ```
-
-Advanced usage:
-
-- update the notebook:
-
-  ```
-  npm run notebook
-  ```
-
-- update the data:
-
-  ```
-  npm run data
-  ```
-
-- remove the temporary files:
-
-  ```
-  npm run clean
-  ```
-
 ## Pros
 
 - generates fewer HTTP requests (the Observable notebook, the
