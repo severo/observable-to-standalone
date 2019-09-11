@@ -10,6 +10,8 @@ more complicated since it requires to manage more files and concepts.
 
 This tutorial gives details about every step. Go to
 [Standalone App Notebook](https://github.com/Fil/SphericalContoursStandalone/)
+(and its
+[blog post](https://projet.liris.cnrs.fr/mi2/posts/2019/09/11/observable-to-standalone.html))
 or [joyplot/](./joyplot/) for the direct solution.
 
 ## Pros
