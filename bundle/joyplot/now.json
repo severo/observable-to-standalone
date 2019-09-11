@@ -1,0 +1,9 @@
+{
+  "builds": [
+    {
+      "src": "now.sh",
+      "use": "@now/static-build",
+      "config": { "distDir": "public" }
+    }
+  ]
+}

@@ -675,6 +675,9 @@ directory, but there is still a need to configure hosting to publish them
 online. There are various solutions to help publish from the cli, let's see one
 of them: [now.sh](https://now.sh).
 
+Note that here we don't send the public/ directory to now.sh, but instead we
+tell now.sh to get the notebook, the data and to build the files itself.
+
 - install "now" as a development dependency:
 
   ```bash
@@ -688,6 +691,49 @@ of them: [now.sh](https://now.sh).
   "deploy": "now",
   ```
 
+- in package.json, add node 10.x as the minimal node version (required by
+  now@16):
+
+  ```json
+  "engines": {
+    "node": ">=10.x"
+  },
+  ```
+
+- create three files dedicated to now.sh:
+
+  - now.json
+
+    ```json
+    {
+      "builds": [
+        {
+          "src": "now.sh",
+          "use": "@now/static-build",
+          "config": {"distDir": "public"}
+        }
+      ]
+    }
+    ```
+
+  - now.sh
+
+    ```bash
+    #!/bin/bash
+
+    npm run notebook && npm install && npm run data && npm run build
+    ```
+
+  - .nowignore
+
+    ```
+    node_modules/
+    public/
+    vendor/
+    package-lock.json
+    yarn.lock
+    ```
+
 - deploy on now.sh hosting:
 
   ```bash
@@ -697,33 +743,17 @@ of them: [now.sh](https://now.sh).
 - open the now.sh URL in a browser (for example:
   https://joyplot-ag4zeux4u.now.sh/)
 
-Note that it works only because the we already downloaded the data and notebook,
-and the `now` command uploaded the vendor/, public/ an public/data/ directories.
-Let's automate it a little bit:
+Note that it works even if we never build the files locally:
 
-- rename the `build` script in package.json:
-
-  ```json
-  "build:light": "rollup -c && cp src/index.html public/",
-  "preserve": "npm run build:light",
-  ```
-
-- add the `build` script where the notebook is installed first, and the data is
-  downloaded, before building the application:
-
-  ```json
-  "build": "npm run notebook && npm run data && npm run build:light",
-  ```
-
-- also add a `clear` script to remove the temporary files:
+- add a `clear` script to remove the temporary files:
 
   ```json
   "clean": "rm -rf node_modules public vendor",
   ```
 
-- test it from a fresh copy (we use `npx now` here to show that the deploy works
-  without any of the following directories being present locally: node_modules,
-  public, or vendor):
+- test the now.sh deployment on a fresh copy (we use `npx now` to avoid having
+  node_modules, public, or vendor directories in local--note that it requires to
+  have now installed globally):
 
   ```
   npm run clean

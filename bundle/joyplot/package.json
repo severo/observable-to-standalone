@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run notebook && npm install && npm run data && npm run build:light",
-    "build:light": "rollup -c && cp src/index.html public/",
+    "build": "rollup -c && cp src/index.html public/",
     "clean": "rm -rf node_modules public vendor",
     "data": "rm -rf public/data && mkdir -p public/data && node bin/download-data.js",
     "deploy": "now",
     "notebook": "rm -f vendor/notebook.tgz && mkdir -p vendor && curl -o vendor/notebook.tgz $npm_package_custom_notebook && npm install --save-optional aaa_notebook@file:vendor/notebook.tgz",
-    "preserve": "npm run build:light",
+    "preserve": "npm run build",
     "serve": "http-server public/",
+    "setup": "npm run notebook && npm install && npm run data",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -19,6 +19,9 @@
   },
   "custom": {
     "notebook": "https://api.observablehq.com/@mbostock/psr-b1919-21.tgz?v=3"
+  },
+  "engines": {
+    "node": ">=10.x"
   },
   "author": "",
   "license": "ISC",

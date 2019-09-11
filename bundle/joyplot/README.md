@@ -11,7 +11,7 @@ Basic usage:
 
   ```bash
   cd joyplot
-  npm run build
+  npm run setup
   ```
 
 - run locally
@@ -20,7 +20,7 @@ Basic usage:
   npm run serve
   ```
 
-- deploy on now.sh (see https://joyplot-ag4zeux4u.now.sh/):
+- deploy on now.sh (see https://joyplot-65flet8xb.now.sh/):
 
   ```bash
   npm run deploy
