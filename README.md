@@ -34,14 +34,17 @@ file: ["Bundle" method](./bundle)
 
 See it in action by Philippe Rivière on the Spherical contours notebook:
 
-- [Original notebook](https://observablehq.com/@fil/spherical-contours) [@observablehq]
-- [Prepared notebook](https://observablehq.com/@fil/standalone-app-notebook) [@observablehq]
-- [Self-contained project](https://github.com/Fil/SphericalContoursStandalone) [@github]
-- [Self-contained app](https://sphericalcontoursstandalone.fil.now.sh/) [@now.sh]
+- [Original notebook](https://observablehq.com/@fil/spherical-contours)
+  [@observablehq]
+- [Self-contained project](https://github.com/Fil/SphericalContoursStandalone)
+  [@github]
+- [Self-contained app](https://sphericalcontoursstandalone.fil.now.sh/)
+  [@now.sh]
+- [blog post](https://projet.liris.cnrs.fr/mi2/posts/2019/09/11/observable-to-standalone.html)
 
-Two more simpler methods are possible. The first one is to download and extract
-tgz from Observable notebook to use the default index.html file provided in the
-tgz file: ["Default Observable export" method](./default_observable_export)
+Two simpler methods are possible. The first one is to download and extract tgz
+from Observable notebook to use the default index.html file provided in the tgz
+file: ["Default Observable export" method](./default_observable_export)
 
 [![Diagram for the "Default Observable export" method](./assets/default_observable_export_method.png)](./default_observable_export)
 
@@ -69,5 +72,6 @@ application is to rewrite the code from scratch:
 
 ## Credits
 
-Project developed for the [LIRIS M2i project](https://projet.liris.cnrs.fr/mi2/) by Sylvain
-Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
+Project developed for the [LIRIS M2i project](https://projet.liris.cnrs.fr/mi2/)
+by Sylvain Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike
+Bostock.
