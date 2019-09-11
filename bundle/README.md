@@ -734,6 +734,8 @@ tell now.sh to get the notebook, the data and to build the files itself.
     yarn.lock
     ```
 
+The name of the project will be used to construct the URL on now.sh — if you forked an existing project, make sure that you changed the name (the first line in package.json) accordingly.
+
 - deploy on now.sh hosting:
 
   ```bash
