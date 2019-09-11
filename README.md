@@ -69,5 +69,5 @@ application is to rewrite the code from scratch:
 
 ## Credits
 
-Project realized for [LIRIS M2i](https://projet.liris.cnrs.fr/mi2/) by Sylvain
+Project developed for the [LIRIS M2i project](https://projet.liris.cnrs.fr/mi2/) by Sylvain
 Lesage with the help of Philippe Rivière, Romain Vuillemot and Mike Bostock.
