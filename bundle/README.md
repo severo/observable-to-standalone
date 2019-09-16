@@ -318,17 +318,16 @@ these dependencies statically (via import statements) and embed them into the
 bundle.
 
 - exploring the [notebook](https://observablehq.com/@mbostock/psr-b1919-21), we
-  see that it requires "d3@5". This information is also present in the last cell
-  declaration in
-  [src/notebook/@mbostock/psr-b1919-21.js](./joyplot/step3/src/notebook/@mbostock/psr-b1919-21.js):
+  see that it requires "d3@5". To find all the required modules, look for the
+  require() function in the notebook module:
 
-  ```js
-  main.variable(observer('d3')).define('d3', ['require'], function(require) {
-    return require('d3@5');
-  });
+  ```bash
+  $ grep -r "require(" node_modules/aaa_notebook
+  ./node_modules/aaa_notebook/@mbostock/psr-b1919-21.js:require("d3@5")
   ```
 
-  or analyzing the requests in the browser developer tools.
+  The "requests" tab in the browser developer tools will also show the modules
+  fetched from jsdelivr.net.
 
 - install this dependency as a development dependency. Take care of installing
   the exact same version (see [npm-semver](https://docs.npmjs.com/misc/semver)
@@ -736,7 +735,9 @@ tell now.sh to get the notebook, the data and to build the files itself.
     yarn.lock
     ```
 
-The name of the project will be used to construct the URL on now.sh — if you forked an existing project, make sure that you changed the name (the first line in package.json) accordingly.
+The name of the project will be used to construct the URL on now.sh — if you
+forked an existing project, make sure that you changed the name (the first line
+in package.json) accordingly.
 
 - deploy on now.sh hosting:
 
