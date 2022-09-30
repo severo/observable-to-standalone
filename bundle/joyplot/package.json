@@ -30,7 +30,7 @@
     "@observablehq/runtime": "^4.4.3",
     "d3": "7.x",
     "d3-require": "^1.2.3",
-    "http-server": "^0.11.1",
+    "http-server": "^14.1.1",
     "now": "^16.2.0",
     "request": "^2.88.0",
     "rollup": "^1.21.2",
