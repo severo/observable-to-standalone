@@ -12,7 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "d3": "^5.11.0",
+    "d3": "^7.6.1",
     "now": "^16.1.2",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
